@@ -20,6 +20,7 @@ class GraficCharacter{
     public boolean move(Command direction){
         int x = currentPositionX, y = currentPositionY;
         //Condizione per spostarsi
+        this.direction = direction;
         switch(direction){
             case Left:
                 x--;
@@ -37,7 +38,7 @@ class GraficCharacter{
         graficModel.getTile(currentPositionX, currentPositionY).free();
         currentPositionX = x;
         currentPositionY = y;
-        graficModel.getTile(currentPositionX, currentPositionY).occupieCharacter();
+        graficModel.getTile(currentPositionX, currentPositionY).occupieCharacter(this.direction);
         return true; //confermo lo spostamento
     }
 }

@@ -17,10 +17,25 @@
 
 .character{
     -fx-background-color: green;
-    -fx-background-image: url("../../myFiles/img/linkDown.png");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 70%;
+}
+
+.character.down{
+    -fx-background-image: url("file:myFiles/img/staticLinkDown.png");
+}
+
+.character.up{
+    -fx-background-image: url("file:myFiles/img/staticLinkUp.png");
+}
+
+.character.left{
+    -fx-background-image: url("file:myFiles/img/staticLinkLeft.png");
+}
+
+.character.right{
+    -fx-background-image: url("file:myFiles/img/staticLinkRight.png");
 }
 
 .enemy{

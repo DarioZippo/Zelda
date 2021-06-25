@@ -47,7 +47,7 @@ public class GraficModel {
         
         private void spawnCharacter(final int coordinateX, final int coordinateY, GraficModel gameView) {
             link = new GraficCharacter(coordinateX, coordinateY, gameView);
-            gBoard[coordinateX][coordinateY].occupieCharacter();
+            gBoard[coordinateX][coordinateY].occupieCharacter(Command.Down);
         }  
         
         private void spawnEnemy(final int coordinateX, final int coordinateY, GraficModel gameView){

@@ -29,12 +29,13 @@ public class GraficTile extends Region {
         this.getStyleClass().add("free");
     }
     
-    public void occupieCharacter()
+    public void occupieCharacter(Command direction)
     {
         this.getStyleClass().clear();
         this.getStyleClass().add("tile");
         this.getStyleClass().add("occupied");
         this.getStyleClass().add("character");
+        this.getStyleClass().add(direction.toString().toLowerCase());
     }
     
     public void occupieEnemy()
