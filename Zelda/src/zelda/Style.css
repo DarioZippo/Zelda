@@ -1,0 +1,17 @@
+.tile{
+    -fx-border-style: solid; 
+    -fx-border-width: 5; 
+    -fx-border-color: black; 
+    -fx-min-width: 100; 
+    -fx-min-height: 100; 
+    -fx-max-width: 100; 
+    -fx-max-height: 100;
+}
+
+.free{
+    -fx-background-color: red;
+}
+
+.occupied{
+    -fx-background-color: green;
+}
