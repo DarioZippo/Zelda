@@ -8,13 +8,13 @@ import javafx.stage.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
-import static zelda.BoardUtils.*;
+import static zelda.GameUtils.*;
 
     public class Zelda extends Application{       
         
         private Character link;
         
-        private GameView gameView;
+        private GraficModel gameView;
         private GameModel gameModel;
         private KeyAssociation keyAssociation;
         
@@ -23,7 +23,7 @@ import static zelda.BoardUtils.*;
         
         public void start(Stage primaryStage) throws Exception {            
             gameModel = new GameModel();
-            gameView = new GameView(gameModel.getBoard());
+            gameView = new GraficModel(gameModel.getBoard());
             
             //keyAssociation = new KeyAssociation(39, 37);
             

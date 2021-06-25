@@ -4,10 +4,10 @@ package zelda;
 import java.util.*;
 import javafx.scene.*;
 import javafx.scene.layout.Pane;
-import static zelda.BoardUtils.*;
+import static zelda.GameUtils.*;
 import zelda.*;
 
-public class GameView {
+public class GraficModel {
         
         private GraficTile[][] gBoard;
         private GraficCharacter link;
@@ -16,7 +16,7 @@ public class GameView {
         
         public Parent graficContent;
         
-        public GameView(GameTile[][] board){
+        public GraficModel(GameTile[][] board){
             gBoard = new GraficTile[WIDTH][HEIGHT];
             graficContent = createGraficContent(board);
             
@@ -45,12 +45,12 @@ public class GameView {
             return root;
         }
         
-        private void spawnCharacter(final int coordinateX, final int coordinateY, GameView gameView) {
+        private void spawnCharacter(final int coordinateX, final int coordinateY, GraficModel gameView) {
             link = new GraficCharacter(coordinateX, coordinateY, gameView);
             gBoard[coordinateX][coordinateY].occupieCharacter();
         }  
         
-        private void spawnEnemy(final int coordinateX, final int coordinateY, GameView gameView){
+        private void spawnEnemy(final int coordinateX, final int coordinateY, GraficModel gameView){
             GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, gameView);
             enemies.add(temp);
             gBoard[coordinateX][coordinateY].occupieEnemy();

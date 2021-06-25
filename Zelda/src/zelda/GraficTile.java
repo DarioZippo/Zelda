@@ -5,7 +5,7 @@ import static java.time.Clock.system;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import static zelda.BoardUtils.*;
+import static zelda.GameUtils.*;
 
 public class GraficTile extends Region {
 /*

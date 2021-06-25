@@ -1,7 +1,7 @@
 package zelda;
 
 import java.util.*;
-import static zelda.BoardUtils.*;
+import static zelda.GameUtils.*;
 
 public class GameModel{
     

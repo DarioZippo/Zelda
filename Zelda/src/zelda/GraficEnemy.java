@@ -6,9 +6,9 @@ class GraficEnemy{
     
     private int currentPositionX;
     private int currentPositionY;
-    private GameView gameView;
+    private GraficModel gameView;
     
-    GraficEnemy(final int coordinateX, final int coordinateY, GameView gameView) {
+    GraficEnemy(final int coordinateX, final int coordinateY, GraficModel gameView) {
         currentPositionX = coordinateX;
         currentPositionY = coordinateY;
         this.gameView = gameView;

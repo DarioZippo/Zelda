@@ -6,11 +6,11 @@ class GraficCharacter{
     
     private int currentPositionX;
     private int currentPositionY;
-    private GameView gameView;
+    private GraficModel gameView;
     
     private Command direction;
     
-    GraficCharacter(final int coordinateX, final int coordinateY, GameView gameView) {
+    GraficCharacter(final int coordinateX, final int coordinateY, GraficModel gameView) {
         currentPositionX = coordinateX;
         currentPositionY = coordinateY;
         this.gameView = gameView;
