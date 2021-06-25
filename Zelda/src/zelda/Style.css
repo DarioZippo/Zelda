@@ -17,6 +17,10 @@
 
 .character{
     -fx-background-color: green;
+    -fx-background-image: url("../../myFiles/img/linkDown.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 70%;
 }
 
 .enemy{

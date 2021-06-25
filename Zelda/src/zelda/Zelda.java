@@ -6,6 +6,7 @@ import javafx.event.*;
 import javafx.scene.*;
 import javafx.stage.*;    
 import javafx.scene.input.*;
+import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import static zelda.GameUtils.*;
