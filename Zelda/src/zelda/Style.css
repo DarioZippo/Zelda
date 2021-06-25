@@ -13,5 +13,12 @@
 }
 
 .occupied{
+}
+
+.character{
     -fx-background-color: green;
+}
+
+.enemy{
+    -fx-background-color: orange;
 }

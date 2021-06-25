@@ -44,10 +44,19 @@ public class GraficTile extends Region {
         this.getStyleClass().add("free");
     }
     
-    public void occupie()
+    public void occupieCharacter()
     {
         this.getStyleClass().clear();
         this.getStyleClass().add("tile");
         this.getStyleClass().add("occupied");
+        this.getStyleClass().add("character");
+    }
+    
+    public void occupieEnemy()
+    {
+        this.getStyleClass().clear();
+        this.getStyleClass().add("tile");
+        this.getStyleClass().add("occupied");
+        this.getStyleClass().add("enemy");
     }
 }

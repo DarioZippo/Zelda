@@ -2,15 +2,13 @@ package zelda;
 
 import zelda.*;
 
-class GraficCharacter{
+class GraficEnemy{
     
     private int currentPositionX;
     private int currentPositionY;
     private GameView gameView;
     
-    private Command direction;
-    
-    GraficCharacter(final int coordinateX, final int coordinateY, GameView gameView) {
+    GraficEnemy(final int coordinateX, final int coordinateY, GameView gameView) {
         currentPositionX = coordinateX;
         currentPositionY = coordinateY;
         this.gameView = gameView;
@@ -22,25 +20,24 @@ class GraficCharacter{
             case Left:
                 gameView.getTile(currentPositionX, currentPositionY).free();
                 currentPositionX--;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
                 break;
             case Right:
                 gameView.getTile(currentPositionX, currentPositionY).free();
                 currentPositionX++;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
                 break;
             case Up:
                 gameView.getTile(currentPositionX, currentPositionY).free();
                 currentPositionY--;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
                 break;
             case Down:
                 gameView.getTile(currentPositionX, currentPositionY).free();
                 currentPositionY++;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
                 break;
         }
-        this.direction = direction;
         return true; //confermo lo spostamento
     }
 }

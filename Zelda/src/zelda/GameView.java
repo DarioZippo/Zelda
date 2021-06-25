@@ -1,6 +1,7 @@
 
 package zelda;
 
+import java.util.*;
 import javafx.scene.*;
 import javafx.scene.layout.Pane;
 import static zelda.BoardUtils.*;
@@ -11,16 +12,21 @@ public class GameView {
         private GraficTile[][] gBoard;
         private GraficCharacter link;
         
+        private ArrayList<GraficEnemy> enemies;
+        
         public Parent graficContent;
         
-        public GameView(Tile[][] board){
+        public GameView(GameTile[][] board){
             gBoard = new GraficTile[WIDTH][HEIGHT];
             graficContent = createGraficContent(board);
             
+            enemies = new ArrayList<GraficEnemy>();
+            
             spawnCharacter((HEIGHT / 2) - 1, (WIDTH / 2) - 1, this);
+            spawnEnemy(WIDTH - 1, HEIGHT - 1, this);
         }
             
-        private Parent createGraficContent(Tile[][] board) {
+        private Parent createGraficContent(GameTile[][] board) {
             Pane root = new Pane();
             root.setPrefSize(WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE);
             root.getChildren().addAll(Zelda.tileGroup);
@@ -41,8 +47,14 @@ public class GameView {
         
         private void spawnCharacter(final int coordinateX, final int coordinateY, GameView gameView) {
             link = new GraficCharacter(coordinateX, coordinateY, gameView);
-            gBoard[coordinateX][coordinateY].occupie();
+            gBoard[coordinateX][coordinateY].occupieCharacter();
         }  
+        
+        private void spawnEnemy(final int coordinateX, final int coordinateY, GameView gameView){
+            GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, gameView);
+            enemies.add(temp);
+            gBoard[coordinateX][coordinateY].occupieEnemy();
+        }
         
         public GraficTile getTile(final int x, final int y){
             return gBoard[x][y];

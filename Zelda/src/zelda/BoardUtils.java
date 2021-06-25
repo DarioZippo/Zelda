@@ -12,7 +12,7 @@ public class BoardUtils {
         throw new RuntimeException("You cannot instantiate me!");
     }
     
-    public static boolean isValidTileCoordinate(int coordinate) {
+    /*public static boolean isValidTileCoordinate(int coordinate) {
         return coordinate >= 0 && coordinate < 64;
-    }
+    }*/
 }

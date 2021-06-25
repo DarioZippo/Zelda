@@ -47,7 +47,7 @@ import static zelda.BoardUtils.*;
         
         private void playerInput(KeyCode key) {
             
-            //System.out.println(key + " == " + KeyCode.RIGHT);
+            System.out.println("Command: " + key);
             
             //if (this.keyAssociation != null) {
                 if (key == KeyCode.RIGHT){ //this.keyAssociation.rightKey) {
@@ -70,12 +70,10 @@ import static zelda.BoardUtils.*;
                     gameView.executePlayerCommand(Command.Down);
                     return;
                 }
-                /*if (key == KeyCode.RIGHT){ //key == this.keyAssociation.swordKey) {
+                if (key == KeyCode.Z){ //key == this.keyAssociation.swordKey) {
                     this.gameModel.executePlayerCommand(Command.Sword);
+                    return;
                 }
-                if (key == KeyCode.RIGHT){ //key == this.keyAssociation.pauseKey) {
-                    this.gameModel.executePlayerCommand(Command.Pause);
-                }*/
             //}
             System.out.println("Sfigato");
         }
