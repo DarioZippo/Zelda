@@ -55,10 +55,11 @@ public class GameModel{
         return board[x][y];
     }
     
-    public synchronized void executePlayerCommand(Command command) {
+    public synchronized boolean executePlayerCommand(Command command) {
+        boolean result = false;
         switch(command){
             case Left: case Right: case Up: case Down:
-                link.move(command);
+                result = link.move(command);
                 link.showPosition();
                 break;
             case Sword:
@@ -67,5 +68,6 @@ public class GameModel{
             /*case pause:
                 PAUSA*/
         }
+        return result;
     }    
 }

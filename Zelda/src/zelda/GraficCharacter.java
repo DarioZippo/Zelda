@@ -1,46 +1,43 @@
 package zelda;
 
 import zelda.*;
+import static zelda.GameUtils.checkPosition;
 
 class GraficCharacter{
     
     private int currentPositionX;
     private int currentPositionY;
-    private GraficModel gameView;
+    private GraficModel graficModel;
     
     private Command direction;
     
     GraficCharacter(final int coordinateX, final int coordinateY, GraficModel gameView) {
         currentPositionX = coordinateX;
         currentPositionY = coordinateY;
-        this.gameView = gameView;
+        this.graficModel = gameView;
     }
     
     public boolean move(Command direction){
+        int x = currentPositionX, y = currentPositionY;
         //Condizione per spostarsi
         switch(direction){
             case Left:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionX--;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                x--;
                 break;
             case Right:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionX++;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                x++;
                 break;
             case Up:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionY--;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                y--;
                 break;
             case Down:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionY++;
-                gameView.getTile(currentPositionX, currentPositionY).occupieCharacter();
+                y++;
                 break;
         }
-        this.direction = direction;
+        graficModel.getTile(currentPositionX, currentPositionY).free();
+        currentPositionX = x;
+        currentPositionY = y;
+        graficModel.getTile(currentPositionX, currentPositionY).occupieCharacter();
         return true; //confermo lo spostamento
     }
 }

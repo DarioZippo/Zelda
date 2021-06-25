@@ -14,7 +14,7 @@ import static zelda.GameUtils.*;
         
         private Character link;
         
-        private GraficModel gameView;
+        private GraficModel graficModel;
         private GameModel gameModel;
         private KeyAssociation keyAssociation;
         
@@ -23,11 +23,11 @@ import static zelda.GameUtils.*;
         
         public void start(Stage primaryStage) throws Exception {            
             gameModel = new GameModel();
-            gameView = new GraficModel(gameModel.getBoard());
+            graficModel = new GraficModel(gameModel.getBoard());
             
             //keyAssociation = new KeyAssociation(39, 37);
             
-            Scene scene = new Scene(gameView.graficContent);
+            Scene scene = new Scene(graficModel.graficContent);
             
             URL url = this.getClass().getResource("Style.css");
             if (url == null) {
@@ -48,26 +48,30 @@ import static zelda.GameUtils.*;
         private void playerInput(KeyCode key) {
             
             System.out.println("Command: " + key);
-            
+            boolean done;
             //if (this.keyAssociation != null) {
                 if (key == KeyCode.RIGHT){ //this.keyAssociation.rightKey) {
-                    gameModel.executePlayerCommand(Command.Right);
-                    gameView.executePlayerCommand(Command.Right);
+                    done = gameModel.executePlayerCommand(Command.Right);
+                    if(done == true)
+                        graficModel.executePlayerCommand(Command.Right);
                     return;
                 }
                 if (key == KeyCode.LEFT){ //key == this.keyAssociation.leftKey) {
-                    gameModel.executePlayerCommand(Command.Left);
-                    gameView.executePlayerCommand(Command.Left);
+                    done = gameModel.executePlayerCommand(Command.Left);
+                    if(done == true)
+                        graficModel.executePlayerCommand(Command.Left);
                     return;
                 }
                 if (key == KeyCode.UP){ //key == this.keyAssociation.leftKey) {
-                    gameModel.executePlayerCommand(Command.Up);
-                    gameView.executePlayerCommand(Command.Up);
+                    done = gameModel.executePlayerCommand(Command.Up);
+                    if(done == true)
+                        graficModel.executePlayerCommand(Command.Up);
                     return;
                 }
                 if (key == KeyCode.DOWN){ //key == this.keyAssociation.leftKey) {
-                    gameModel.executePlayerCommand(Command.Down);
-                    gameView.executePlayerCommand(Command.Down);
+                    done = gameModel.executePlayerCommand(Command.Down);
+                    if(done == true)
+                        graficModel.executePlayerCommand(Command.Down);
                     return;
                 }
                 if (key == KeyCode.Z){ //key == this.keyAssociation.swordKey) {

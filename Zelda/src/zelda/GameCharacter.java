@@ -1,6 +1,7 @@
 package zelda;
 
 import java.util.*;
+import static zelda.GameUtils.*;
 
 class GameCharacter{
     
@@ -19,24 +20,38 @@ class GameCharacter{
     }
     
     public boolean move(Command direction){
-        //Condizione per spostarsi
-        gameModel.getTile(currentPositionX, currentPositionY).changeState();
+        int x = currentPositionX, y = currentPositionY;
         switch(direction){
             case Left:
-                currentPositionX--;
+                x--;
                 break;
             case Right:
-                currentPositionX++;
+                x++;
                 break;
             case Up:
-                currentPositionY--;
+                y--;
                 break;
             case Down:
-                currentPositionY++;
+                y++;
                 break;
         }
         this.direction = direction;
-        return true; //confermo lo spostamento
+        boolean inMap = checkPosition(x, y);
+        if(inMap == true){
+            if(gameModel.getTile(x, y).occupied == true){
+                System.out.println("Nemico in posizione x: " + x + " y: " + y);
+                return false;
+            }
+            gameModel.getTile(currentPositionX, currentPositionY).changeState();//Libero    
+            currentPositionX = x;
+            currentPositionY = y;
+            gameModel.getTile(currentPositionX, currentPositionY).changeState();//Occupo 
+            return true; //confermo lo spostamento
+        }
+        else{
+            System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
+            return false;
+        }
     }
     
     public void attack(){
@@ -55,13 +70,18 @@ class GameCharacter{
                 y++;
                 break;
         }
-        
-        GameTile attacked = gameModel.getTile(x, y);
-        if(attacked.occupied == true){
-            System.out.println("Colpito in posizione x: " + x + " y: " + y);
+        boolean legal = checkPosition(x, y);
+        if(legal == true){
+            GameTile attacked = gameModel.getTile(x, y);
+            if(attacked.occupied == true){
+                System.out.println("Colpito in posizione x: " + x + " y: " + y);
+            }
+            if(attacked.occupied == false){
+                System.out.println("Mancato in posizione x: " + x + " y: " + y);
+            }
         }
-        if(attacked.occupied == false){
-            System.out.println("Mancato in posizione x: " + x + " y: " + y);
+        else{
+            System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
         }
     }
     

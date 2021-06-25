@@ -61,7 +61,7 @@ public class GraficModel {
         }
         
         public synchronized void executePlayerCommand(Command command) {
-            System.out.println("Grafic " + command);
+            //System.out.println("Grafic " + command);
             link.move(command);
         }
 }

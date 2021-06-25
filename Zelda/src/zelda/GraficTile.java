@@ -8,21 +8,6 @@ import javafx.scene.shape.Rectangle;
 import static zelda.GameUtils.*;
 
 public class GraficTile extends Region {
-/*
-    private Piece piece;
-
-    public boolean hasPiece() {
-        return piece != null;
-    }
-
-    public Piece getPiece() {
-        return piece;
-    }
-
-    public void setPiece(Piece piece) {
-        this.piece = piece;
-    }
-*/
     public GraficTile(int x, int y, boolean occupied) {
         //setWidth(TILE_SIZE);
         //setHeight(TILE_SIZE);
