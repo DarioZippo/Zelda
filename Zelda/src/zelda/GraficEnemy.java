@@ -6,38 +6,44 @@ class GraficEnemy{
     
     private int currentPositionX;
     private int currentPositionY;
-    private GraficModel gameView;
+    private GraficModel graficModel;
     
-    GraficEnemy(final int coordinateX, final int coordinateY, GraficModel gameView) {
+    private Command direction;
+    
+    GraficEnemy(final int coordinateX, final int coordinateY, Command direction, GraficModel gameView) {
         currentPositionX = coordinateX;
         currentPositionY = coordinateY;
-        this.gameView = gameView;
+        this.direction = direction;
+        
+        this.graficModel = gameView;
     }
     
-    public boolean move(Command direction){
+    public boolean move(Command direction, boolean mooved){
+        int x = currentPositionX, y = currentPositionY;
         //Condizione per spostarsi
+        this.direction = direction;
+        if(mooved == false){
+            graficModel.getTile(currentPositionX, currentPositionY).occupieEnemy(this.direction);
+            return false;
+        }
         switch(direction){
             case Left:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionX--;
-                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
+                x--;
                 break;
             case Right:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionX++;
-                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
+                x++;
                 break;
             case Up:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionY--;
-                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
+                y--;
                 break;
             case Down:
-                gameView.getTile(currentPositionX, currentPositionY).free();
-                currentPositionY++;
-                gameView.getTile(currentPositionX, currentPositionY).occupieEnemy();
+                y++;
                 break;
         }
+        graficModel.getTile(currentPositionX, currentPositionY).free();
+        currentPositionX = x;
+        currentPositionY = y;
+        graficModel.getTile(currentPositionX, currentPositionY).occupieEnemy(this.direction);
         return true; //confermo lo spostamento
     }
 }

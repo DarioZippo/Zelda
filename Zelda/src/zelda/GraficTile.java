@@ -38,11 +38,12 @@ public class GraficTile extends Region {
         this.getStyleClass().add(direction.toString().toLowerCase());
     }
     
-    public void occupieEnemy()
+    public void occupieEnemy(Command direction)
     {
         this.getStyleClass().clear();
         this.getStyleClass().add("tile");
         this.getStyleClass().add("occupied");
         this.getStyleClass().add("enemy");
+        this.getStyleClass().add(direction.toString().toLowerCase());
     }
 }

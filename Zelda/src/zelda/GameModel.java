@@ -17,6 +17,9 @@ public class GameModel{
         
         spawnCharacter((WIDTH / 2) - 1, (HEIGHT / 2) - 1, this);
         spawnEnemy(WIDTH - 1, HEIGHT - 1, this);
+        spawnEnemy(WIDTH - 2, HEIGHT - 2, this);
+        spawnEnemy(2, 2, this);
+        spawnEnemy(WIDTH - 1, 1, this);
     }
     
     private void createContent() {
@@ -40,7 +43,8 @@ public class GameModel{
     private void spawnEnemy(final int coordinateX, final int coordinateY, GameModel gameModel){
         if(board[coordinateX][coordinateY].occupied == false)
         {
-            GameEnemy temp = new GameEnemy(coordinateX, coordinateY, gameModel);
+            Command direction = randomDirection();
+            GameEnemy temp = new GameEnemy(coordinateX, coordinateY, direction, gameModel);
             enemies.add(temp);
             
             board[coordinateX][coordinateY].changeState();

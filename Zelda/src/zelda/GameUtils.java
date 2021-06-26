@@ -1,5 +1,7 @@
 package zelda;
 
+import java.util.*;
+
 /**
  */
 public class GameUtils {
@@ -21,5 +23,30 @@ public class GameUtils {
             result = false;
         
         return result;
+    }
+    
+    public static Command randomDirection(){
+        Command direction = null;
+        Random rand = new Random();
+        int randInt = rand.nextInt( 4 ); //Generates a number in [0, 1, .., 3]
+        
+        switch(randInt){
+            case 0:
+                direction = Command.Down;
+                break;
+            case 1:
+                direction = Command.Up;
+                break;
+            case 2:
+                direction = Command.Left;
+                break;
+            case 3:
+                direction = Command.Right;
+                break;
+            default:
+                System.out.println("Numero imprevisto: " + randInt);
+                break;
+        }
+        return direction;
     }
 }

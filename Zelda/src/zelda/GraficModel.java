@@ -24,6 +24,9 @@ public class GraficModel {
             
             spawnCharacter((HEIGHT / 2) - 1, (WIDTH / 2) - 1, this);
             spawnEnemy(WIDTH - 1, HEIGHT - 1, this);
+            spawnEnemy(WIDTH - 2, HEIGHT - 2, this);
+            spawnEnemy(2, 2, this);
+            spawnEnemy(WIDTH - 1, 1, this);
         }
             
         private Parent createGraficContent(GameTile[][] board) {
@@ -51,9 +54,10 @@ public class GraficModel {
         }  
         
         private void spawnEnemy(final int coordinateX, final int coordinateY, GraficModel gameView){
-            GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, gameView);
+            Command direction = randomDirection();
+            GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, direction, gameView);
             enemies.add(temp);
-            gBoard[coordinateX][coordinateY].occupieEnemy();
+            gBoard[coordinateX][coordinateY].occupieEnemy(direction);
         }
         
         public GraficTile getTile(final int x, final int y){

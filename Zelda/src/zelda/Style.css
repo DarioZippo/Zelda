@@ -19,7 +19,7 @@
     -fx-background-color: green;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
-    -fx-background-size: 70%;
+    -fx-background-size: 60%;
 }
 
 .character.down{
@@ -40,4 +40,26 @@
 
 .enemy{
     -fx-background-color: orange;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.enemy.down{
+    -fx-background-image: url("file:myFiles/img/staticKnightDown.png");
+    -fx-background-size: 80%;
+}
+
+.enemy.up{
+    -fx-background-image: url("file:myFiles/img/staticKnightUp.png");
+    -fx-background-size: 70%;
+}
+
+.enemy.left{
+    -fx-background-image: url("file:myFiles/img/staticKnightLeft.png");
+    -fx-background-size: 70%;
+}
+
+.enemy.right{
+    -fx-background-image: url("file:myFiles/img/staticKnightRight.png");
+    -fx-background-size: 70%;
 }
