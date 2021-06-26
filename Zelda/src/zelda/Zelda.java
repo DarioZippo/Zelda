@@ -49,30 +49,26 @@ import static zelda.GameUtils.*;
         private void playerInput(KeyCode key) {
             
             System.out.println("Command: " + key);
-            boolean done;
+            boolean mooved;
             //if (this.keyAssociation != null) {
                 if (key == KeyCode.RIGHT){ //this.keyAssociation.rightKey) {
-                    done = gameModel.executePlayerCommand(Command.Right);
-                    if(done == true)
-                        graficModel.executePlayerCommand(Command.Right);
+                    mooved = gameModel.executePlayerCommand(Command.Right);
+                    graficModel.executePlayerCommand(Command.Right, mooved);
                     return;
                 }
                 if (key == KeyCode.LEFT){ //key == this.keyAssociation.leftKey) {
-                    done = gameModel.executePlayerCommand(Command.Left);
-                    if(done == true)
-                        graficModel.executePlayerCommand(Command.Left);
+                    mooved = gameModel.executePlayerCommand(Command.Left);
+                    graficModel.executePlayerCommand(Command.Left, mooved);
                     return;
                 }
                 if (key == KeyCode.UP){ //key == this.keyAssociation.leftKey) {
-                    done = gameModel.executePlayerCommand(Command.Up);
-                    if(done == true)
-                        graficModel.executePlayerCommand(Command.Up);
+                    mooved = gameModel.executePlayerCommand(Command.Up);
+                    graficModel.executePlayerCommand(Command.Up, mooved);
                     return;
                 }
                 if (key == KeyCode.DOWN){ //key == this.keyAssociation.leftKey) {
-                    done = gameModel.executePlayerCommand(Command.Down);
-                    if(done == true)
-                        graficModel.executePlayerCommand(Command.Down);
+                    mooved = gameModel.executePlayerCommand(Command.Down);
+                    graficModel.executePlayerCommand(Command.Down, mooved);
                     return;
                 }
                 if (key == KeyCode.Z){ //key == this.keyAssociation.swordKey) {

@@ -17,10 +17,14 @@ class GraficCharacter{
         this.graficModel = gameView;
     }
     
-    public boolean move(Command direction){
+    public boolean move(Command direction, boolean mooved){
         int x = currentPositionX, y = currentPositionY;
         //Condizione per spostarsi
         this.direction = direction;
+        if(mooved == false){
+            graficModel.getTile(currentPositionX, currentPositionY).occupieCharacter(this.direction);
+            return false;
+        }
         switch(direction){
             case Left:
                 x--;

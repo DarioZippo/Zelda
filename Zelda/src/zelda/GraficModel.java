@@ -60,8 +60,8 @@ public class GraficModel {
             return gBoard[x][y];
         }
         
-        public synchronized void executePlayerCommand(Command command) {
+        public synchronized void executePlayerCommand(Command command, boolean mooved) {
             //System.out.println("Grafic " + command);
-            link.move(command);
+            link.move(command, mooved);
         }
 }
