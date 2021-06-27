@@ -1,25 +1,23 @@
 package zelda;
 
+import static java.lang.Thread.sleep;
 import java.util.*;
 import static zelda.GameUtils.*;
 
 public class GameModel{
+    private GameView gameView;
     
     private GameTile[][] board = new GameTile[WIDTH][HEIGHT];
     
     private GameCharacter link;
     private ArrayList<GameEnemy> enemies;
     
-    public GameModel(){
+    public GameModel(GameView gameView){
         createContent();
         
         enemies = new ArrayList<GameEnemy>();
         
-        spawnCharacter((WIDTH / 2) - 1, (HEIGHT / 2) - 1, this);
-        spawnEnemy(WIDTH - 1, HEIGHT - 1, this);
-        spawnEnemy(WIDTH - 2, HEIGHT - 2, this);
-        spawnEnemy(2, 2, this);
-        spawnEnemy(WIDTH - 1, 1, this);
+        this.gameView = gameView;
     }
     
     private void createContent() {
@@ -31,12 +29,22 @@ public class GameModel{
         }
     }
     
+    public void spawn(){
+        spawnCharacter((WIDTH / 2) - 1, (HEIGHT / 2) - 1, this);
+        spawnEnemy(WIDTH - 1, HEIGHT - 1, this);
+        spawnEnemy(WIDTH - 2, HEIGHT - 2, this);
+        spawnEnemy(2, 2, this);
+        spawnEnemy(WIDTH - 1, 1, this);
+    }
+    
     private void spawnCharacter(final int coordinateX, final int coordinateY, GameModel gameModel) {
         if(board[coordinateX][coordinateY].occupied == false)
         {
             link = new GameCharacter(coordinateX, coordinateY, gameModel);
             
-            board[coordinateX][coordinateY].changeState();
+            board[coordinateX][coordinateY].occupieCharacter(link);
+            
+            gameView.showCharacter(link);
         }
     }  
     
@@ -47,7 +55,9 @@ public class GameModel{
             GameEnemy temp = new GameEnemy(coordinateX, coordinateY, direction, gameModel);
             enemies.add(temp);
             
-            board[coordinateX][coordinateY].changeState();
+            board[coordinateX][coordinateY].occupieEnemy(temp);
+            
+            gameView.showEnemy(temp);
         }
     }
     
@@ -59,19 +69,51 @@ public class GameModel{
         return board[x][y];
     }
     
-    public synchronized boolean executePlayerCommand(Command command) {
+    public GameCharacter getCharacter(){
+        return link;
+    }
+    
+    public ArrayList<GameEnemy> getEnemies(){
+        return enemies;
+    }
+    
+    public synchronized boolean executePlayerCommand(Command command) throws InterruptedException {
         boolean result = false;
+        boolean mooved;
+        GameTile attacked;
         switch(command){
             case Left: case Right: case Up: case Down:
-                result = link.move(command);
+                mooved = link.move(command);
+                System.out.println("Spostamento avvenuto, mooved = " + mooved);
+                if(mooved == true){
+                    gameView.moveAnimation(link, this);
+                    return true;
+                }
                 link.showPosition();
                 break;
             case Sword:
-                link.attack();
+                attacked = link.attack();
+                if(attacked != null){
+                    combat(link, attacked);
+                }
                 break;
             /*case pause:
-                PAUSA*/
+                PAUSA*/ 
         }
+        gameView.update(this);
         return result;
-    }    
+    }
+    
+    //Versione in cui Link attacca
+    public void combat(GameCharacter attacker, GameTile attacked){
+        kill(attacked.getOccupierEnemy());
+        attacked.free();
+        //GameUpdate
+        gameView.update(this);
+        //DropOggetto
+    }
+    
+    public void kill(GameEnemy attacked){
+        enemies.remove(attacked);
+    }
 }

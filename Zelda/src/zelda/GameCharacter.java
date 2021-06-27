@@ -19,6 +19,18 @@ class GameCharacter{
         direction = Command.Down;
     }
     
+    public int getX(){
+        return currentPositionX;
+    }
+    
+    public int getY(){
+        return currentPositionY;
+    }
+    
+    public Command getDirection(){
+        return direction;
+    }  
+    
     public boolean move(Command direction){
         int x = currentPositionX, y = currentPositionY;
         switch(direction){
@@ -42,10 +54,10 @@ class GameCharacter{
                 System.out.println("Nemico in posizione x: " + x + " y: " + y);
                 return false;
             }
-            gameModel.getTile(currentPositionX, currentPositionY).changeState();//Libero    
+            gameModel.getTile(currentPositionX, currentPositionY).free();//Libero    
             currentPositionX = x;
             currentPositionY = y;
-            gameModel.getTile(currentPositionX, currentPositionY).changeState();//Occupo 
+            gameModel.getTile(currentPositionX, currentPositionY).occupieCharacter(this);//Occupo 
             return true; //confermo lo spostamento
         }
         else{
@@ -54,7 +66,7 @@ class GameCharacter{
         }
     }
     
-    public void attack(){
+    public GameTile attack(){
         int x = currentPositionX, y = currentPositionY;
         switch(direction){
             case Left:
@@ -70,19 +82,21 @@ class GameCharacter{
                 y++;
                 break;
         }
-        boolean legal = checkPosition(x, y);
-        if(legal == true){
+        boolean inMap = checkPosition(x, y);
+        if(inMap == true){
             GameTile attacked = gameModel.getTile(x, y);
-            if(attacked.occupied == true){
+            if(attacked.occupiedEnemy == true){
                 System.out.println("Colpito in posizione x: " + x + " y: " + y);
+                return attacked;//Gestici combattimento
             }
-            if(attacked.occupied == false){
+            if(attacked.occupiedEnemy == false){
                 System.out.println("Mancato in posizione x: " + x + " y: " + y);
             }
         }
         else{
             System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
         }
+        return null;
     }
     
     public void showPosition(){

@@ -1,6 +1,8 @@
 package zelda;
 
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.*;
 import javafx.event.*;
 import javafx.scene.*;
@@ -15,20 +17,19 @@ import static zelda.GameUtils.*;
         
         private Character link;
         
-        private GraficModel graficModel;
+        private GameView gameView;
         private GameModel gameModel;
         private KeyAssociation keyAssociation;
         
         public static Group tileGroup = new Group();
-        private Group pieceGroup = new Group();
         
         public void start(Stage primaryStage) throws Exception {            
-            gameModel = new GameModel();
-            graficModel = new GraficModel(gameModel.getBoard());
+            gameView = new GameView();
+            gameModel = new GameModel(gameView);
             
             //keyAssociation = new KeyAssociation(39, 37);
             
-            Scene scene = new Scene(graficModel.graficContent);
+            Scene scene = new Scene(gameView.showBoard(gameModel));
             
             URL url = this.getClass().getResource("Style.css");
             if (url == null) {
@@ -38,41 +39,48 @@ import static zelda.GameUtils.*;
             scene.getStylesheets().add(css);
             
             scene.setOnKeyPressed((KeyEvent ev) -> {
-                this.playerInput(ev.getCode());
+                try {
+                    this.playerInput(ev.getCode());
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
             
             primaryStage.setTitle("Zelda");
             primaryStage.setScene(scene);
             primaryStage.show();
+            
+            gameModel.spawn();
         }
         
-        private void playerInput(KeyCode key) {
+        private synchronized void playerInput(KeyCode key) throws InterruptedException {
             
             System.out.println("Command: " + key);
-            boolean mooved;
+            boolean mooved; //per il momento è inutile
+            boolean hasHit; //per il momento è inutile
             //if (this.keyAssociation != null) {
                 if (key == KeyCode.RIGHT){ //this.keyAssociation.rightKey) {
                     mooved = gameModel.executePlayerCommand(Command.Right);
-                    graficModel.executePlayerCommand(Command.Right, mooved);
+                    //gameView.executePlayerCommand(Command.Right, mooved);
                     return;
                 }
                 if (key == KeyCode.LEFT){ //key == this.keyAssociation.leftKey) {
                     mooved = gameModel.executePlayerCommand(Command.Left);
-                    graficModel.executePlayerCommand(Command.Left, mooved);
+                    //gameView.executePlayerCommand(Command.Left, mooved);
                     return;
                 }
                 if (key == KeyCode.UP){ //key == this.keyAssociation.leftKey) {
                     mooved = gameModel.executePlayerCommand(Command.Up);
-                    graficModel.executePlayerCommand(Command.Up, mooved);
+                    //gameView.executePlayerCommand(Command.Up, mooved);
                     return;
                 }
                 if (key == KeyCode.DOWN){ //key == this.keyAssociation.leftKey) {
                     mooved = gameModel.executePlayerCommand(Command.Down);
-                    graficModel.executePlayerCommand(Command.Down, mooved);
+                    //gameView.executePlayerCommand(Command.Down, mooved);
                     return;
                 }
                 if (key == KeyCode.Z){ //key == this.keyAssociation.swordKey) {
-                    this.gameModel.executePlayerCommand(Command.Sword);
+                    hasHit = gameModel.executePlayerCommand(Command.Sword);
                     return;
                 }
             //}

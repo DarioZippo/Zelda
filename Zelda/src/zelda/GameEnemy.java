@@ -18,6 +18,18 @@ class GameEnemy{
         this.gameModel = gameModel;
     }
     
+    public int getX(){
+        return currentPositionX;
+    }
+    
+    public int getY(){
+        return currentPositionY;
+    }
+    
+    public Command getDirection(){
+        return direction;
+    }
+    
     public boolean move(Command direction){
         int x = currentPositionX, y = currentPositionY;
         switch(direction){
@@ -41,10 +53,10 @@ class GameEnemy{
                 System.out.println("Protagonista in posizione x: " + x + " y: " + y);
                 return false;
             }
-            gameModel.getTile(currentPositionX, currentPositionY).changeState();//Libero    
+            gameModel.getTile(currentPositionX, currentPositionY).free();//Libero    
             currentPositionX = x;
             currentPositionY = y;
-            gameModel.getTile(currentPositionX, currentPositionY).changeState();//Occupo 
+            gameModel.getTile(currentPositionX, currentPositionY).occupieEnemy(this);//Occupo 
             return true; //confermo lo spostamento
         }
         else{
@@ -55,5 +67,9 @@ class GameEnemy{
     
     public void showPosition(){
         System.out.println("Enemy " + "x: " + currentPositionX + " y: " + currentPositionY);
+    }
+    
+    public GameModel getGameModel(){
+        return this.gameModel;
     }
 }

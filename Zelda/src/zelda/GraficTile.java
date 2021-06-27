@@ -2,12 +2,20 @@
 package zelda;
 
 import static java.time.Clock.system;
+import javafx.geometry.Pos;
+import javafx.scene.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import static zelda.GameUtils.*;
 
-public class GraficTile extends Region {
+public class GraficTile extends StackPane {
+    public ImageView occupier;
+    public String occupierPath;
+    private GameView gameView;
+    
     public GraficTile(int x, int y, boolean occupied) {
         //setWidth(TILE_SIZE);
         //setHeight(TILE_SIZE);
@@ -18,7 +26,6 @@ public class GraficTile extends Region {
             this.getStyleClass().add("occupied");
         else
             this.getStyleClass().add("free");
-        System.out.println("x:" + x + " y:" + y);
         relocate(x * TILE_SIZE, y * TILE_SIZE);
     }
     
@@ -27,6 +34,11 @@ public class GraficTile extends Region {
         this.getStyleClass().clear();
         this.getStyleClass().add("tile");
         this.getStyleClass().add("free");
+        
+        this.getChildren().clear();
+        this.occupier = null;
+        
+        this.occupierPath = null;
     }
     
     public void occupieCharacter(Command direction)
@@ -35,7 +47,20 @@ public class GraficTile extends Region {
         this.getStyleClass().add("tile");
         this.getStyleClass().add("occupied");
         this.getStyleClass().add("character");
-        this.getStyleClass().add(direction.toString().toLowerCase());
+        
+        this.occupierPath = "file:myFiles/img/staticLink"; //+ direction.toString() + ".png";
+        
+        this.occupier = new ImageView(occupierPath + direction.toString() + ".png");
+        this.occupier.setFitHeight(70);
+        this.occupier.setFitWidth(55);
+        /*
+        this.occupier.getStyleClass().add("sprite");
+        this.occupier.getStyleClass().add("character");
+        this.occupier.getStyleClass().add(direction.toString().toLowerCase());
+        */
+        this.getChildren().add(this.occupier);
+        this.setAlignment(Pos.CENTER);
+        
     }
     
     public void occupieEnemy(Command direction)
@@ -44,6 +69,14 @@ public class GraficTile extends Region {
         this.getStyleClass().add("tile");
         this.getStyleClass().add("occupied");
         this.getStyleClass().add("enemy");
-        this.getStyleClass().add(direction.toString().toLowerCase());
+        
+        this.occupierPath = "file:myFiles/img/staticKnight"; //+ direction.toString() + ".png";
+        
+        this.occupier = new ImageView(occupierPath + direction.toString() + ".png");
+        this.occupier.setFitHeight(70);
+        this.occupier.setFitWidth(70);
+        //this.getStyleClass().add(direction.toString().toLowerCase());
+        this.getChildren().add(this.occupier);
+        this.setAlignment(Pos.CENTER);
     }
 }

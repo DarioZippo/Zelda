@@ -15,13 +15,14 @@
 .occupied{
 }
 
-.character{
+.tile.character{
     -fx-background-color: green;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: 60%;
 }
 
+.sprite.character{
+    -fx-width: 150px;
+}
+/*
 .character.down{
     -fx-background-image: url("file:myFiles/img/staticLinkDown.png");
 }
@@ -37,13 +38,13 @@
 .character.right{
     -fx-background-image: url("file:myFiles/img/staticLinkRight.png");
 }
-
+*/
 .enemy{
     -fx-background-color: orange;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
-
+/*
 .enemy.down{
     -fx-background-image: url("file:myFiles/img/staticKnightDown.png");
     -fx-background-size: 80%;
@@ -63,3 +64,4 @@
     -fx-background-image: url("file:myFiles/img/staticKnightRight.png");
     -fx-background-size: 70%;
 }
+*/
