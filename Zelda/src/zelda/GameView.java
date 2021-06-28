@@ -168,6 +168,44 @@ public class GameView {
         System.out.println("Animato");
     }
     
+    public synchronized void attackAnimation(GameCharacter link, GameModel gameModel){
+        int x = link.getX(), y = link.getY();
+        GraficTile tile = this.getTile(x, y);
+        
+        Image im0 = new Image(tile.occupierPath + link.getDirection() + ".png");
+        Image im1 = new Image("file:myFiles/img/swordFirstLink" + link.getDirection() + ".png");
+        Image im2 = new Image("file:myFiles/img/swordSecondLink" + link.getDirection() + ".png");
+        Image im3 = new Image("file:myFiles/img/swordThirdLink" + link.getDirection() + ".png");
+        
+        ImageView currentImage = new ImageView(im1);
+        
+        double cx = tile.getLayoutX() + tile.occupier.getLayoutX();
+        double cy = tile.getLayoutY() + tile.occupier.getLayoutY();
+        
+        tile.getChildren().clear();
+        
+        currentImage.setFitHeight(70);
+        currentImage.setFitWidth(55);
+        
+        root.getChildren().add(currentImage);
+        int last = root.getChildren().size() - 1;
+        root.getChildren().get(last).setLayoutX(cx);
+        root.getChildren().get(last).setLayoutY(cy);
+        
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im1)),
+            new KeyFrame(Duration.millis(150), new KeyValue(currentImage.imageProperty(), im2)),
+            new KeyFrame(Duration.millis(300), new KeyValue(currentImage.imageProperty(), im3)),
+            new KeyFrame(Duration.millis(450), new KeyValue(currentImage.imageProperty(), im0))
+        );
+        timeline.play();
+        timeline.setOnFinished((finish) -> {
+            root.getChildren().remove(last); 
+            update(gameModel); 
+            System.out.println("Fine animazione");
+        });
+    }
+    
     /*
     public synchronized void executePlayerCommand(Command command, boolean mooved) {
         //System.out.println("Grafic " + command);

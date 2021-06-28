@@ -93,10 +93,12 @@ public class GameModel{
                 break;
             case Sword:
                 attacked = link.attack();
+                gameView.attackAnimation(link, this);
                 if(attacked != null){
                     combat(link, attacked);
                 }
-                break;
+                return true;
+                //break;
             /*case pause:
                 PAUSA*/ 
         }
@@ -109,7 +111,7 @@ public class GameModel{
         kill(attacked.getOccupierEnemy());
         attacked.free();
         //GameUpdate
-        gameView.update(this);
+        //gameView.update(this);
         //DropOggetto
     }
     
