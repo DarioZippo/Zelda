@@ -12,49 +12,123 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import static zelda.GameUtils.*;
-
-    public class Zelda extends Application{       
+    
+class TurnHandler extends Thread{
+    public boolean turnCharacter;
+    private int enemyIndex;
+    private int inputCounter;
+    
+    private GameModel gameModel;
+    private GameView gameView;
+    
+    TurnHandler(GameModel gameModel, GameView gameView){
+        super();
+        this.gameModel = gameModel;
+        this.gameView = gameView;
         
-        private Character link;
+        turnCharacter = true;
+        enemyIndex = 0;
+        inputCounter = 0;
         
-        private GameView gameView;
-        private GameModel gameModel;
-        private KeyAssociation keyAssociation;
-        
-        public static Group tileGroup = new Group();
-        
-        public void start(Stage primaryStage) throws Exception {            
-            gameView = new GameView();
-            gameModel = new GameModel(gameView);
-            
-            //keyAssociation = new KeyAssociation(39, 37);
-            
-            Scene scene = new Scene(gameView.showBoard(gameModel));
-            
-            URL url = this.getClass().getResource("Style.css");
-            if (url == null) {
-                System.out.println("Resource not found. Aborting.");
-            }
-            String css = url.toExternalForm(); 
-            scene.getStylesheets().add(css);
-            
-            scene.setOnKeyPressed((KeyEvent ev) -> {
-                try {
-                    this.playerInput(ev.getCode());
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
+        Zelda.listen = true;
+    }
+    public void run(){
+        while(true){
+            try {
+                if(turnCharacter == true){
+                    if(gameView.endedAnimationCharacter == true){
+                        Platform.runLater(() ->{
+                            gameView.update(gameModel);
+                        });
+                        inputCounter++;
+                        if(inputCounter == 2){
+                            turnCharacter = false;
+                            Platform.runLater(() ->{
+                                gameModel.EnemiesTurn(enemyIndex);
+                            });
+                        }
+                        else
+                            Zelda.listen = true;
+                    }
                 }
-            });
-            
-            primaryStage.setTitle("Zelda");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            
-            gameModel.spawn();
+                else{
+                    if(gameView.endedAnimationEnemies == true){
+                        Platform.runLater(() ->{
+                            gameView.update(gameModel);
+                        });
+                        enemyIndex = 0;
+                        turnCharacter = true;
+                        inputCounter = 0;
+                        Zelda.listen = true;
+                    }
+                    else if(gameView.endedAnimationCurrentEnemy == true){
+                        System.out.println("endedAnimationCurrentEnemy");
+                        Platform.runLater(() ->{
+                            gameView.update(gameModel);
+                        });
+                        enemyIndex++;
+                        Platform.runLater(() ->{
+                            gameModel.EnemiesTurn(enemyIndex);
+                        });
+                    }
+                }
+                //System.out.println("Dormo");
+                this.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+    }
+}
+
+public class Zelda extends Application{       
+    static boolean listen;
+    
+    private Character link;
+    
+    private GameView gameView;
+    private GameModel gameModel;
+    private KeyAssociation keyAssociation;
+    
+    public static Group tileGroup = new Group();
+    
+    public void start(Stage primaryStage) throws Exception {            
+        gameView = new GameView();
+        gameModel = new GameModel(gameView);
         
-        private synchronized void playerInput(KeyCode key) throws InterruptedException {
-            
+        //keyAssociation = new KeyAssociation(39, 37);
+        
+        Scene scene = new Scene(gameView.showBoard(gameModel));
+        
+        URL url = this.getClass().getResource("Style.css");
+        if (url == null) {
+            System.out.println("Resource not found. Aborting.");
+        }
+        String css = url.toExternalForm(); 
+        scene.getStylesheets().add(css);
+        
+        TurnHandler t1 = new TurnHandler(gameModel, gameView);
+        t1.setDaemon(true);
+        t1.start();
+        
+        scene.setOnKeyReleased((KeyEvent ev) -> {
+            try {
+                this.playerInput(ev.getCode());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        primaryStage.setTitle("Zelda");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+        gameModel.spawn();
+    }
+    
+    private synchronized void playerInput(KeyCode key) throws InterruptedException {
+        if(listen == true){
+            listen = false;
             System.out.println("Command: " + key);
             boolean mooved; //per il momento è inutile
             boolean hasHit; //per il momento è inutile
@@ -85,5 +159,9 @@ import static zelda.GameUtils.*;
                 }
             //}
             System.out.println("Sfigato");
+            listen = true;
         }
+        else
+            System.out.println("Aspetta");
     }
+}

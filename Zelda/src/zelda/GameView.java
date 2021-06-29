@@ -1,5 +1,6 @@
 package zelda;
 
+import java.io.File;
 import java.util.ArrayList;
 import javafx.animation.*;
 import javafx.event.*;
@@ -8,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.image.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.*;
 import javafx.scene.transform.*;
 import javafx.stage.Screen;
 import javafx.util.Duration;
@@ -24,7 +26,14 @@ public class GameView {
     
     private Pane root;
     
+    public boolean endedAnimationCharacter;
+    public boolean endedAnimationEnemies;
+    public boolean endedAnimationCurrentEnemy;
+    
     public GameView(){
+        endedAnimationCharacter = false;
+        endedAnimationEnemies = false;
+        endedAnimationCurrentEnemy = false;
         //enemies = new ArrayList<GraficEnemy>();
     }
         
@@ -76,6 +85,10 @@ public class GameView {
         }
         
         showCharacter(gameModel.getCharacter());
+        
+        endedAnimationCharacter = false;
+        endedAnimationEnemies = false;
+        endedAnimationCurrentEnemy = false;
     }
     
     private void clearBoard(){
@@ -131,15 +144,15 @@ public class GameView {
         
         Timeline timeline = new Timeline(
             new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im2)),
-            new KeyFrame(Duration.millis(300), new KeyValue(currentImage.imageProperty(), im3)),
-            new KeyFrame(Duration.millis(500), new KeyValue(currentImage.imageProperty(), im2)),
-            new KeyFrame(Duration.millis(700), new KeyValue(currentImage.imageProperty(), im3))
+            new KeyFrame(Duration.millis(250), new KeyValue(currentImage.imageProperty(), im3)),
+            new KeyFrame(Duration.millis(400), new KeyValue(currentImage.imageProperty(), im2)),
+            new KeyFrame(Duration.millis(550), new KeyValue(currentImage.imageProperty(), im3))
         );
         timeline.play();
         
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(currentImage);
-        translate.setDuration(Duration.millis(800));
+        translate.setDuration(Duration.millis(600));
         //translate.setCycleCount(TranslateTransition.INDEFINITE);
         
         switch(link.getDirection()){
@@ -161,16 +174,92 @@ public class GameView {
         translate.play();
         translate.setOnFinished((finish) -> {
             root.getChildren().remove(last); 
-            update(gameModel); 
+            endedAnimationCharacter = true; //update(gameModel); 
             System.out.println("Fine animazione");
         });
         
         System.out.println("Animato");
     }
     
-    public synchronized void attackAnimation(GameCharacter link, GameModel gameModel){
+    public synchronized void moveAnimation(GameEnemy enemy, GameModel gameModel){
+        int x = enemy.getX(), y = enemy.getY();
+        
+        switch(enemy.getDirection()){
+            case Left:
+                x++;
+                break;
+            case Right:
+                x--;
+                break;
+            case Up:
+                y++;
+                break;
+            case Down:
+                y--;
+                break;
+        }
+        
+        GraficTile tile = this.getTile(x, y);
+      
+        Image im = new Image(tile.occupierPath + enemy.getDirection() + ".png");
+        
+        ImageView currentImage = new ImageView(im);
+        
+        double cx = tile.getLayoutX() + tile.occupier.getLayoutX() + 15;
+        double cy = tile.getLayoutY() + tile.occupier.getLayoutY() + 15;
+        
+        tile.free();
+        
+        currentImage.setFitHeight(70);
+        currentImage.setFitWidth(70);
+        
+        root.getChildren().add(currentImage);
+        int last = root.getChildren().size() - 1;
+        root.getChildren().get(last).setLayoutX(cx);
+        root.getChildren().get(last).setLayoutY(cy);
+        
+        TranslateTransition translate = new TranslateTransition();
+        translate.setNode(currentImage);
+        translate.setDuration(Duration.millis(600));
+        //translate.setCycleCount(TranslateTransition.INDEFINITE);
+        
+        switch(enemy.getDirection()){
+            case Up:
+                translate.setByY(-TILE_SIZE);
+                break;
+            case Down:
+                translate.setByY(TILE_SIZE);
+                break;
+            case Left:
+                translate.setByX(-TILE_SIZE);
+                break;
+            case Right:
+                translate.setByX(TILE_SIZE);
+                break;
+        }
+        
+        //translate.setAutoReverse(true);
+        translate.play();
+        translate.setOnFinished((finish) -> {
+            root.getChildren().remove(last); 
+            endedAnimationCurrentEnemy = true;//update(gameModel);
+            System.out.println("Fine animazione");
+        });
+        
+        System.out.println("Animato");
+    }
+    
+    public synchronized void attackAnimation(GameCharacter link, GameModel gameModel, boolean hasHit){
         int x = link.getX(), y = link.getY();
         GraficTile tile = this.getTile(x, y);
+        
+        /*  NON SUONA NE' IL MEDIAPLAYER NE' L'AUDIOCLIP
+        //Media media = new Media(new File("myFiles/sounds/linkAttack1.mp3").toURI().toString());
+        AudioClip audioClip = new AudioClip(new File("myFiles/sounds/linkAttack1.mp3").toURI().toString()); 
+        audioClip.setCycleCount(10);
+        audioClip.play();
+        System.out.println(audioClip.isPlaying() + " Volume: " + audioClip.getVolume());
+        */
         
         Image im0 = new Image(tile.occupierPath + link.getDirection() + ".png");
         Image im1 = new Image("file:myFiles/img/swordFirstLink" + link.getDirection() + ".png");
@@ -185,13 +274,13 @@ public class GameView {
         tile.getChildren().clear();
         
         currentImage.setFitHeight(70);
-        currentImage.setFitWidth(55);
+        currentImage.setFitWidth(70);
         
         root.getChildren().add(currentImage);
         int last = root.getChildren().size() - 1;
         root.getChildren().get(last).setLayoutX(cx);
         root.getChildren().get(last).setLayoutY(cy);
-        
+                
         Timeline timeline = new Timeline(
             new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im1)),
             new KeyFrame(Duration.millis(150), new KeyValue(currentImage.imageProperty(), im2)),
@@ -201,7 +290,43 @@ public class GameView {
         timeline.play();
         timeline.setOnFinished((finish) -> {
             root.getChildren().remove(last); 
-            update(gameModel); 
+            if(hasHit == false){
+                System.out.println("Attacco a vuoto");
+                endedAnimationCharacter = true;//update(gameModel);
+            }
+            System.out.println("Fine animazione attack");
+        });
+        
+    }
+    
+    public synchronized void killAnimation(GameTile gameTile, GameModel gameModel){
+        int x = gameTile.coordinateX, y = gameTile.coordinateY;
+        GraficTile tile = this.getTile(x, y);
+        
+        ImageView imageView = new ImageView(tile.occupierPath + gameTile.getOccupierEnemy().getDirection() + ".png");
+        
+        double cx = tile.getLayoutX() + tile.occupier.getLayoutX();
+        double cy = tile.getLayoutY() + tile.occupier.getLayoutY();
+        
+        tile.free();
+        
+        imageView.setFitHeight(70);
+        imageView.setFitWidth(70);
+        
+        root.getChildren().add(imageView);
+        int last = root.getChildren().size() - 1;
+        root.getChildren().get(last).setLayoutX(cx);
+        root.getChildren().get(last).setLayoutY(cy);
+        
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(imageView);
+        fade.setDuration(Duration.millis(450));
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.play();
+        fade.setOnFinished((finish) -> {
+            //root.getChildren().remove(last); 
+            endedAnimationCharacter = true;//update(gameModel); 
             System.out.println("Fine animazione");
         });
     }

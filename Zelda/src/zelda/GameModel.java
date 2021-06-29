@@ -93,7 +93,7 @@ public class GameModel{
                 break;
             case Sword:
                 attacked = link.attack();
-                gameView.attackAnimation(link, this);
+                gameView.attackAnimation(link, this, attacked != null);
                 if(attacked != null){
                     combat(link, attacked);
                 }
@@ -102,14 +102,16 @@ public class GameModel{
             /*case pause:
                 PAUSA*/ 
         }
-        gameView.update(this);
+        gameView.endedAnimationCharacter = true;//gameView.update(this);
         return result;
     }
     
     //Versione in cui Link attacca
-    public void combat(GameCharacter attacker, GameTile attacked){
-        kill(attacked.getOccupierEnemy());
-        attacked.free();
+    public void combat(GameCharacter attacker, GameTile attackedTile){
+        kill(attackedTile.getOccupierEnemy());
+        gameView.killAnimation(attackedTile, this);
+        attackedTile.free();
+        //attacked.free();
         //GameUpdate
         //gameView.update(this);
         //DropOggetto
@@ -117,5 +119,18 @@ public class GameModel{
     
     public void kill(GameEnemy attacked){
         enemies.remove(attacked);
+    }
+    
+    public void EnemiesTurn(int i){
+        if(i >= enemies.size()) //Finisce il turno avversario
+        {
+            gameView.endedAnimationEnemies = true;
+            return;
+        }
+        else
+        {
+            System.out.println("Nemico numero: " + i);
+            enemies.get(i).turn(gameView);
+        }
     }
 }

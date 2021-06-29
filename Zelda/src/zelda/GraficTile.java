@@ -49,8 +49,10 @@ public class GraficTile extends StackPane {
         this.getStyleClass().add("character");
         
         this.occupierPath = "file:myFiles/img/staticLink"; //+ direction.toString() + ".png";
+        //this.occupierPath = "file:myFiles/img/swordFirstLinkUp.png";
         
         this.occupier = new ImageView(occupierPath + direction.toString() + ".png");
+        //this.occupier = new ImageView("file:myFiles/img/swordFirstLinkUpZoom.png");
         this.occupier.setFitHeight(70);
         this.occupier.setFitWidth(55);
         /*

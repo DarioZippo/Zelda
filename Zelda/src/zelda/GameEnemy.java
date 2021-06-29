@@ -30,6 +30,35 @@ class GameEnemy{
         return direction;
     }
     
+    private Command chooseDirection(){
+        Command direction;
+        
+        int x = gameModel.getCharacter().getX();
+        int y = gameModel.getCharacter().getY();
+        
+        int distX = Math.abs(x - this.currentPositionX);
+        int distY = Math.abs(y - this.currentPositionY);
+        
+        if(distX >= distY){
+            if(this.currentPositionX - x > 0){
+                direction = Command.Left;
+            }
+            else{
+                direction = Command.Right;
+            }
+        }
+        else{
+            if(this.currentPositionY - y > 0){
+                direction = Command.Up;
+            }
+            else{
+                direction = Command.Down;
+            }
+        }
+        
+        return direction;
+    }   
+    
     public boolean move(Command direction){
         int x = currentPositionX, y = currentPositionY;
         switch(direction){
@@ -71,5 +100,48 @@ class GameEnemy{
     
     public GameModel getGameModel(){
         return this.gameModel;
+    }
+    
+    private boolean attackableCharacter(){
+        int x = currentPositionX, y = currentPositionY;
+        switch(direction){
+            case Left:
+                x--;
+                break;
+            case Right:
+                x++;
+                break;
+            case Up:
+                y--;
+                break;
+            case Down:
+                y++;
+                break;
+        }
+        if(gameModel.getTile(x, y).occupiedCharacter == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public void turn(GameView gameView){
+        /*if(attackableCharacter() == true){
+            attack();
+        }
+        else{*/
+            boolean mooved = false;
+            Command direction = chooseDirection();
+            mooved = move(direction);
+            if(mooved == true){
+               gameView.moveAnimation(this, gameModel);
+            }
+            else
+                gameView.endedAnimationCurrentEnemy = true;
+            /*if(attackableCharacter() == true){
+                attack();
+            }*/
+        //}
     }
 }
