@@ -62,18 +62,22 @@ public class GameView {
     }
     
     public void showCharacter(GameCharacter character) {
-        int x = character.getX(), y = character.getY();
-        Command direction = character.getDirection();
-        //link = new GraficCharacter(coordinateX, coordinateY, this);
-        board[x][y].occupieCharacter(direction);
+        if(character != null){
+            int x = character.getX(), y = character.getY();
+            Command direction = character.getDirection();
+            //link = new GraficCharacter(coordinateX, coordinateY, this);
+            board[x][y].occupieCharacter(direction);
+        }
     }  
     
     public void showEnemy(GameEnemy enemy){
-        int x = enemy.getX(), y = enemy.getY();
-        Command direction = enemy.getDirection();
-        /*GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, direction, this);
-        enemies.add(temp);*/
-        board[x][y].occupieEnemy(direction);
+        if(enemy != null){
+            int x = enemy.getX(), y = enemy.getY();
+            Command direction = enemy.getDirection();
+            /*GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, direction, this);
+            enemies.add(temp);*/
+            board[x][y].occupieEnemy(direction);
+        }
     }
     
     public void update(GameModel gameModel){
@@ -299,6 +303,48 @@ public class GameView {
         
     }
     
+    public synchronized void attackAnimation(GameEnemy gameEnemy, GameModel gameModel){
+        int x = gameEnemy.getX(), y = gameEnemy.getY();
+        GraficTile tile = this.getTile(x, y);
+        
+        Command direction = gameEnemy.getDirection();
+        Image im0 = new Image(tile.occupierPath + direction + ".png");
+        Image im1 = new Image("file:myFiles/img/swordFirstKnight" + direction + ".png");
+        
+        ImageView currentImage = new ImageView(im1);
+        
+        double cx = tile.getLayoutX() + tile.occupier.getLayoutX() + 15;
+        double cy = tile.getLayoutY() + tile.occupier.getLayoutY() + 15;
+        
+        tile.getChildren().clear();
+        
+        if(direction == Command.Up || direction == Command.Down){
+            currentImage.setFitHeight(90);
+            currentImage.setFitWidth(60);
+        }
+        else if(direction == Command.Left || direction == Command.Right){
+            currentImage.setFitHeight(60);
+            currentImage.setFitWidth(110);
+        }
+        
+        root.getChildren().add(currentImage);
+        int last = root.getChildren().size() - 1;
+        root.getChildren().get(last).setLayoutX(cx);
+        root.getChildren().get(last).setLayoutY(cy);
+                
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im1)),
+            new KeyFrame(Duration.millis(400), new KeyValue(currentImage.imageProperty(), im0))
+        );
+        timeline.play();
+        timeline.setOnFinished((finish) -> {
+            root.getChildren().remove(last); 
+            endedAnimationCurrentEnemy = true;//update(gameModel);
+            System.out.println("Fine animazione enemy attack");
+        });
+        
+    }
+    
     public synchronized void killAnimation(GameTile gameTile, GameModel gameModel){
         int x = gameTile.coordinateX, y = gameTile.coordinateY;
         GraficTile tile = this.getTile(x, y);
@@ -329,6 +375,10 @@ public class GameView {
             endedAnimationCharacter = true;//update(gameModel); 
             System.out.println("Fine animazione");
         });
+    }
+    
+    public void endGame(){
+        clearBoard();
     }
     
     /*

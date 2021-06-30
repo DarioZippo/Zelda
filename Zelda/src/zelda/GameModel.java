@@ -12,12 +12,18 @@ public class GameModel{
     private GameCharacter link;
     private ArrayList<GameEnemy> enemies;
     
+    private int linkLives;
+    public boolean endGame;
+    
     public GameModel(GameView gameView){
         createContent();
+        
+        linkLives = 3;
         
         enemies = new ArrayList<GameEnemy>();
         
         this.gameView = gameView;
+        endGame = false;
     }
     
     private void createContent() {
@@ -132,5 +138,22 @@ public class GameModel{
             System.out.println("Nemico numero: " + i);
             enemies.get(i).turn(gameView);
         }
+    }
+    
+    public void attackedCharacter(){
+        linkLives--;
+        if(linkLives == 0){
+            System.out.println("Hai perso");
+            endGame = true;
+        }
+    }
+    
+    private void clear(){
+        link = null;
+        enemies.clear();
+    }
+    
+    public void endGame(){
+        clear();
     }
 }

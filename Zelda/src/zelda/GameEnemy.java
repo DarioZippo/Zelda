@@ -118,30 +118,47 @@ class GameEnemy{
                 y++;
                 break;
         }
-        if(gameModel.getTile(x, y).occupiedCharacter == true){
-            return true;
+        boolean inMap = checkPosition(x, y);
+        if(inMap == true){
+            if(gameModel.getTile(x, y).occupiedCharacter == true){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         else{
             return false;
         }
     }
     
+    public void attack(){
+        gameModel.attackedCharacter();
+    }
+    
     public void turn(GameView gameView){
-        /*if(attackableCharacter() == true){
+        if(attackableCharacter() == true){
             attack();
+            System.out.println("Attaccabile");
+            gameView.attackAnimation(this, gameModel);
         }
-        else{*/
+        else{
+            System.out.println("Non attaccabile");
             boolean mooved = false;
             Command direction = chooseDirection();
             mooved = move(direction);
             if(mooved == true){
                gameView.moveAnimation(this, gameModel);
             }
-            else
-                gameView.endedAnimationCurrentEnemy = true;
-            /*if(attackableCharacter() == true){
+            else if(attackableCharacter() == true){
                 attack();
-            }*/
-        //}
+                System.out.println("Attaccabile");
+                gameView.attackAnimation(this, gameModel);
+            }
+            else{
+                gameView.endedAnimationCurrentEnemy = true;
+                gameView.attackAnimation(this, gameModel);
+            }
+        }
     }
 }

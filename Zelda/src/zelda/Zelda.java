@@ -66,10 +66,22 @@ class TurnHandler extends Thread{
                         Platform.runLater(() ->{
                             gameView.update(gameModel);
                         });
-                        enemyIndex++;
-                        Platform.runLater(() ->{
-                            gameModel.EnemiesTurn(enemyIndex);
-                        });
+                        
+                        if(gameModel.endGame == true){
+                            System.out.println("Game Over");
+                            Zelda.listen = false;
+                            gameModel.endGame();
+                            Platform.runLater(() ->{
+                                gameView.endGame();
+                            });
+                        }
+                        
+                        else{
+                            enemyIndex++;
+                            Platform.runLater(() ->{
+                                gameModel.EnemiesTurn(enemyIndex);
+                            });
+                        }
                     }
                 }
                 //System.out.println("Dormo");
