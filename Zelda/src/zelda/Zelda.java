@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.*;
+import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.scene.*;
 import javafx.stage.*;    
@@ -74,6 +75,7 @@ class TurnHandler extends Thread{
                             Platform.runLater(() ->{
                                 gameView.endGame();
                             });
+                            break;
                         }
                         
                         else{
@@ -90,6 +92,7 @@ class TurnHandler extends Thread{
                 Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println("Uscito dal ciclo");
     }
 }
 
@@ -102,6 +105,7 @@ public class Zelda extends Application{
     private GameModel gameModel;
     private KeyAssociation keyAssociation;
     
+    public static ObservableList<Record> records;
     public static Group tileGroup = new Group();
     
     public void start(Stage primaryStage) throws Exception {            
@@ -110,7 +114,7 @@ public class Zelda extends Application{
         
         //keyAssociation = new KeyAssociation(39, 37);
         
-        Scene scene = new Scene(gameView.showBoard(gameModel));
+        Scene scene = new Scene(gameView.createContent(gameModel));
         
         URL url = this.getClass().getResource("Style.css");
         if (url == null) {

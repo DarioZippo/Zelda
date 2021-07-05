@@ -157,7 +157,6 @@ class GameEnemy{
             }
             else{
                 gameView.endedAnimationCurrentEnemy = true;
-                gameView.attackAnimation(this, gameModel);
             }
         }
     }

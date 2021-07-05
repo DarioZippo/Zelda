@@ -142,6 +142,7 @@ public class GameModel{
     
     public void attackedCharacter(){
         linkLives--;
+        gameView.updateLives(linkLives);
         if(linkLives == 0){
             System.out.println("Hai perso");
             endGame = true;
