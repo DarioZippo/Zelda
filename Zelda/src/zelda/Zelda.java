@@ -1,120 +1,84 @@
 package zelda;
 
+import java.awt.Transparency;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.*;
 import javafx.collections.ObservableList;
 import javafx.event.*;
+import javafx.geometry.Pos;
 import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.*;    
 import javafx.scene.input.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.*;
 import static zelda.GameUtils.*;
-    
-class TurnHandler extends Thread{
-    public boolean turnCharacter;
-    private int enemyIndex;
-    private int inputCounter;
-    
-    private GameModel gameModel;
-    private GameView gameView;
-    
-    TurnHandler(GameModel gameModel, GameView gameView){
-        super();
-        this.gameModel = gameModel;
-        this.gameView = gameView;
-        
-        turnCharacter = true;
-        enemyIndex = 0;
-        inputCounter = 0;
-        
-        Zelda.listen = true;
-    }
-    public void run(){
-        while(true){
-            try {
-                if(turnCharacter == true){
-                    if(gameView.endedAnimationCharacter == true){
-                        Platform.runLater(() ->{
-                            gameView.update(gameModel);
-                        });
-                        inputCounter++;
-                        if(inputCounter == 2){
-                            turnCharacter = false;
-                            Platform.runLater(() ->{
-                                gameModel.EnemiesTurn(enemyIndex);
-                            });
-                        }
-                        else
-                            Zelda.listen = true;
-                    }
-                }
-                else{
-                    if(gameView.endedAnimationEnemies == true){
-                        Platform.runLater(() ->{
-                            gameView.update(gameModel);
-                        });
-                        enemyIndex = 0;
-                        turnCharacter = true;
-                        inputCounter = 0;
-                        Zelda.listen = true;
-                    }
-                    else if(gameView.endedAnimationCurrentEnemy == true){
-                        System.out.println("endedAnimationCurrentEnemy");
-                        Platform.runLater(() ->{
-                            gameView.update(gameModel);
-                        });
-                        
-                        if(gameModel.endGame == true){
-                            System.out.println("Game Over");
-                            Zelda.listen = false;
-                            gameModel.endGame();
-                            Platform.runLater(() ->{
-                                gameView.endGame();
-                            });
-                            break;
-                        }
-                        
-                        else{
-                            enemyIndex++;
-                            Platform.runLater(() ->{
-                                gameModel.EnemiesTurn(enemyIndex);
-                            });
-                        }
-                    }
-                }
-                //System.out.println("Dormo");
-                this.sleep(100);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        System.out.println("Uscito dal ciclo");
-    }
-}
 
 public class Zelda extends Application{       
-    static boolean listen;
+    public boolean listen;
     
     private Character link;
     
+    private Pane root;
+    private Button loginButton;
+    private TextField loginTextField;
+    private TableView<Record> ranking;
+    
+    private Builder builder;
     private GameView gameView;
     private GameModel gameModel;
+    private DBManager dbManager;
     private KeyAssociation keyAssociation;
     
     public static ObservableList<Record> records;
     public static Group tileGroup = new Group();
     
-    public void start(Stage primaryStage) throws Exception {            
+    public void start(Stage primaryStage) throws Exception {   
+        builder = new Builder();
         gameView = new GameView();
         gameModel = new GameModel(gameView);
+        dbManager = new DBManager();
         
+        listen = false;
+        
+        dbManager.caricaClientiDB();
+        //dbManager.caricaClientiPredefiniti();
+        /*
+        Record record = new Record("MasterZi", 100);
+        dbManager.registraClienteDB(record);
+        */
         //keyAssociation = new KeyAssociation(39, 37);
         
-        Scene scene = new Scene(gameView.createContent(gameModel));
+        root = new Pane();
+        
+        root.getChildren().add(gameView.createContent(gameModel));
+        root.getChildren().add(builder.createContent(gameModel, gameView) );
+        
+        loginButton = builder.getLoginButton();
+        loginTextField = builder.getLoginTextField();
+        ranking = builder.getRanking();
+        
+        loginButton.setOnAction((ActionEvent ev) -> {
+            if(loginTextField.getText() != null && loginTextField.getText().isEmpty() == false){
+                gameModel.setUser(loginTextField.getText());
+                gameModel.start();
+
+                TurnHandler t = new TurnHandler(gameModel, gameView, this);
+                t.setDaemon(true);
+                t.start(); 
+                
+                loginTextField.setDisable(true);
+                loginButton.setDisable(true);
+            }
+        });
+        
+        Scene scene = new Scene(root);
         
         URL url = this.getClass().getResource("Style.css");
         if (url == null) {
@@ -123,15 +87,21 @@ public class Zelda extends Application{
         String css = url.toExternalForm(); 
         scene.getStylesheets().add(css);
         
-        TurnHandler t1 = new TurnHandler(gameModel, gameView);
-        t1.setDaemon(true);
-        t1.start();
-        
         scene.setOnKeyReleased((KeyEvent ev) -> {
             try {
                 this.playerInput(ev.getCode());
+                ev.consume();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        scene.setOnMousePressed(event -> {
+            if (!ranking.equals(event.getSource())) {
+                ranking.getParent().requestFocus();
+            }
+            if (!loginTextField.equals(event.getSource())) {
+                loginTextField.getParent().requestFocus();
             }
         });
         
@@ -139,7 +109,7 @@ public class Zelda extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        gameModel.spawn();
+        //gameModel.spawn();
     }
     
     private synchronized void playerInput(KeyCode key) throws InterruptedException {
@@ -179,5 +149,18 @@ public class Zelda extends Application{
         }
         else
             System.out.println("Aspetta");
+    }
+    
+    public void endGame(){
+        listen = false;
+        Record record = new Record(gameModel.getUser(), gameModel.getPoints());
+        dbManager.registraClienteDB(record);
+        ranking.setItems(records);
+        gameModel.endGame();
+        Platform.runLater(() ->{
+            gameView.endGame();
+        }); 
+        loginTextField.setDisable(false);
+        loginButton.setDisable(false);
     }
 }

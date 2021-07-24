@@ -6,7 +6,7 @@ public class Record {
     private final SimpleStringProperty user;
     private final SimpleIntegerProperty points;
     
-    private Record(String currentUser, int currentPoints){
+    Record(String currentUser, int currentPoints){
         user = new SimpleStringProperty(currentUser);
         points = new SimpleIntegerProperty(currentPoints);
     }

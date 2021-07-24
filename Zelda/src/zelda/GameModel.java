@@ -6,6 +6,8 @@ import static zelda.GameUtils.*;
 
 public class GameModel{
     private GameView gameView;
+    private String user;
+    private int points;
     
     private GameTile[][] board = new GameTile[WIDTH][HEIGHT];
     
@@ -35,12 +37,33 @@ public class GameModel{
         }
     }
     
+    public void setUser(String user){
+        this.user = new String(user);
+    }
+    
+    public String getUser(){
+        return user;
+    }
+    
+    public void setPoints(int points){
+        this.points = points;
+    }
+    
+    public int getPoints(){
+        return points;
+    }
+    
+    public void start(){
+        points = 0;
+        spawn();
+        resetLives();
+    }
+    
     public void spawn(){
         spawnCharacter((WIDTH / 2) - 1, (HEIGHT / 2) - 1, this);
-        spawnEnemy(WIDTH - 1, HEIGHT - 1, this);
-        spawnEnemy(WIDTH - 2, HEIGHT - 2, this);
-        spawnEnemy(2, 2, this);
-        spawnEnemy(WIDTH - 1, 1, this);
+        for(int i = 0; i < 4; i++){
+            randomSpawnEnemy(this);
+        }
     }
     
     private void spawnCharacter(final int coordinateX, final int coordinateY, GameModel gameModel) {
@@ -52,6 +75,8 @@ public class GameModel{
             
             gameView.showCharacter(link);
         }
+        else
+            System.out.println("Spawn personaggio occupato");
     }  
     
     private void spawnEnemy(final int coordinateX, final int coordinateY, GameModel gameModel){
@@ -65,6 +90,14 @@ public class GameModel{
             
             gameView.showEnemy(temp);
         }
+    }
+    
+    private void randomSpawnEnemy(GameModel gameModel){
+        Random rand = new Random();
+        int x = rand.nextInt(WIDTH);
+        int y = rand.nextInt(HEIGHT);
+        
+        spawnEnemy(x, y, gameModel);
     }
     
     public GameTile[][] getBoard(){
@@ -125,6 +158,10 @@ public class GameModel{
     
     public void kill(GameEnemy attacked){
         enemies.remove(attacked);
+        points += 10;
+        for(int i = 0; i < 2; i++){
+            randomSpawnEnemy(this);
+        }
     }
     
     public void EnemiesTurn(int i){
@@ -149,12 +186,27 @@ public class GameModel{
         }
     }
     
+    public void resetLives(){
+        linkLives = 3;
+        gameView.resetLives();
+    }
+    
+    private void clearBoard(){
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                board[i][j].free();
+            }
+        }
+    }
+    
     private void clear(){
         link = null;
         enemies.clear();
+        clearBoard();
     }
     
     public void endGame(){
+        endGame = false;
         clear();
     }
 }

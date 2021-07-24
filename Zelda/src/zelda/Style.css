@@ -97,6 +97,7 @@
 
 .column{
     -fx-pref-width: 150;
+    -fx-alignment: center;
 }
 
 .rankingTitle{
