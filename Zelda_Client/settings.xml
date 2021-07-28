@@ -1,0 +1,13 @@
+<zelda.SettingsXML>
+  <keyAssociation>
+    <rightKey>RIGHT</rightKey>
+    <leftKey>LEFT</leftKey>
+    <upKey>UP</upKey>
+    <downKey>DOWN</downKey>
+    <swordKey>Z</swordKey>
+  </keyAssociation>
+  <serverLogAddress>
+    <IPAddress>localhost</IPAddress>
+    <port>9200</port>
+  </serverLogAddress>
+</zelda.SettingsXML>

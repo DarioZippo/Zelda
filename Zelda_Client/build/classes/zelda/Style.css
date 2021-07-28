@@ -1,0 +1,134 @@
+.background{
+    -fx-background-image: url("file:myFiles/img/backgroundRanchMap1Upscale.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.tileSceneBuilder{
+    -fx-border-style: solid; 
+    -fx-border-width: 1; 
+    -fx-border-color: black;
+    
+    -fx-min-width: 200; 
+    -fx-min-height: 200; 
+    -fx-max-width: 200; 
+    -fx-max-height: 200;
+}
+
+.tile{
+    /*
+    -fx-border-style: solid; 
+    -fx-border-width: 1; 
+    -fx-border-color: black;
+    */
+    -fx-min-width: 100; 
+    -fx-min-height: 100; 
+    -fx-max-width: 100; 
+    -fx-max-height: 100;
+}
+
+.characterStat{
+    -fx-background-color:  rgba(255, 230, 204, 1);
+    
+    -fx-border-style: solid;
+    -fx-border-width: 4;
+    -fx-border-color: rgba(215, 155, 0, 1);
+    
+    -fx-pref-height: 150;
+    -fx-pref-width: 300;
+}
+
+.heart{
+    
+}
+
+.keyTutorial{
+    -fx-background-color: rgba(27, 161, 226, 1);
+    
+    -fx-border-style: solid;
+    -fx-border-width: 4;
+    -fx-border-color: rgba(0, 110, 175, 1);
+    
+    -fx-pref-height: 150;
+    -fx-pref-width: 500;
+}
+
+.keyText{
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-opacity: 1;
+    -fx-alignment: center;
+    -fx-pref-height: 25;
+    -fx-pref-width: 86;
+}
+
+.login{
+    -fx-background-color: rgba(96, 169, 23, 1);
+    
+    -fx-border-style: solid;
+    -fx-border-width: 4;
+    -fx-border-color: rgba(45, 118, 0, 1);
+    
+    -fx-pref-height: 150;
+    -fx-pref-width: 300;
+}
+
+.loginButton{
+    -fx-pref-height: 35;
+    -fx-pref-width: 98;
+}
+
+.loginTextField{
+    -fx-alignment: center;
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-opacity: 1;
+}
+
+.rankingWrapper{
+    -fx-background-color: rgba(179, 179, 179, 1);
+    -fx-pref-height: 600;
+    -fx-pref-width: 300;
+}
+
+.ranking{
+    -fx-pref-height: 551;
+    -fx-pref-width: 300;
+}
+
+.column{
+    -fx-pref-width: 150;
+    -fx-alignment: center;
+}
+
+.rankingTitle{
+    -fx-pref-height: 48;
+    -fx-pref-width: 300;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-size: 24;
+}
+
+.free{
+    //-fx-background-color: red;
+}
+
+.occupied{
+}
+
+.tile.character{
+    -fx-background-color: rgba(0, 161, 255, 0.5);
+    -fx-border-style: solid; 
+    -fx-border-width: 2; 
+    -fx-border-color: rgba(0, 100, 255, 1);
+}
+
+.sprite.character{
+    -fx-width: 150px;
+}
+
+.enemy{
+    -fx-background-color: rgba(150, 0, 0, 0.5);
+    -fx-border-style: solid; 
+    -fx-border-width: 2; 
+    -fx-border-color: rgba(120, 0, 0, 1);
+}
