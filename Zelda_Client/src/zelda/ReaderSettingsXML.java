@@ -18,7 +18,7 @@ public class ReaderSettingsXML {
     private static final String filePathXsd = "settings.xsd";
     //private static final KeyAssociation keyAssociation = new KeyAssociation(KeyCode.RIGHT, KeyCode.LEFT, KeyCode.UP, KeyCode.DOWN, KeyCode.Z);
     public static final SettingsXML defaultSettings = new SettingsXML(
-            new KeyAssociation(KeyCode.RIGHT, KeyCode.LEFT, KeyCode.UP, KeyCode.DOWN, KeyCode.Z),
+            new KeyAssociation(KeyCode.RIGHT, KeyCode.LEFT, KeyCode.UP, KeyCode.DOWN, KeyCode.Z, KeyCode.C, KeyCode.X),
             new ServerAddress("localhost", 9200)
     );
 

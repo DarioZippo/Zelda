@@ -26,6 +26,8 @@ public class Zelda extends Application{
     private Character link;
     
     private Pane root;
+    private TextField specialTextField;
+    private TextField bowTextField;
     private Button loginButton;
     private TextField loginTextField;
     private TableView<Record> ranking;
@@ -63,9 +65,13 @@ public class Zelda extends Application{
         
         loginButton = builder.getLoginButton();
         loginTextField = builder.getLoginTextField();
+        specialTextField = builder.getKeyCTextField();
+        bowTextField = builder.getBowTextField();
         ranking = builder.getRanking();
         
         LocalCacheOperations.ripristinaCache(loginTextField);
+        gameView.setSpecialTextField(specialTextField);
+        gameView.setBowTextField(bowTextField);
         
         loginButton.setOnAction((ActionEvent ev) -> {
             EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionButton);
@@ -172,6 +178,14 @@ public class Zelda extends Application{
                 }
                 if (key == this.keyAssociation.swordKey) {
                     hasHit = gameModel.executePlayerCommand(Command.Sword);
+                    return;
+                }
+                if (key == this.keyAssociation.specialKey) {
+                    hasHit = gameModel.executePlayerCommand(Command.Special);
+                    return;
+                }
+                if (key == this.keyAssociation.arrowKey) {
+                    hasHit = gameModel.executePlayerCommand(Command.Arrow);
                     return;
                 }
             }

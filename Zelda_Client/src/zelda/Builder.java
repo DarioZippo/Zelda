@@ -19,9 +19,19 @@ import static zelda.GameUtils.WIDTH;
 public class Builder {
     private Pane root;
     private ArrayList<ImageView> hearts;
+    private TextField keyCText; //da cambiare
+    private TextField keyXText; //da cambiare
     private TextField loginTextField;
     private Button loginButton;
     private TableView<Record> ranking;
+    
+    public TextField getKeyCTextField(){
+        return keyCText;
+    }
+    
+    public TextField getBowTextField(){
+        return keyXText;
+    }
     
     public Button getLoginButton(){
         return loginButton;
@@ -155,8 +165,8 @@ public class Builder {
         TextField keyZText = new TextField("SWORD");
         keyZText.setLayoutX(58);
         keyZText.setLayoutY(40);
-        keyZText.setPrefHeight(25);
-        keyZText.setPrefWidth(86);
+        //keyZText.setPrefHeight(25);
+        //keyZText.setPrefWidth(86);
         keyZText.setDisable(true);
         keyZText.getStyleClass().add("keyText");
         
@@ -169,7 +179,7 @@ public class Builder {
         keyC.setLayoutX(233); 
         keyC.setLayoutY(5);
         
-        TextField keyCText = new TextField("SPECIAL");
+        keyCText = new TextField("SPECIAL");
         keyCText.setLayoutX(208);
         keyCText.setLayoutY(40);
         keyCText.setPrefHeight(25);
@@ -186,7 +196,7 @@ public class Builder {
         keyX.setLayoutX(385); 
         keyX.setLayoutY(5);
         
-        TextField keyXText = new TextField("BOW");
+        keyXText = new TextField("BOW");
         keyXText.setLayoutX(360);
         keyXText.setLayoutY(40);
         //keyXText.setPrefHeight(25);

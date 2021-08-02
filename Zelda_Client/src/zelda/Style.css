@@ -62,6 +62,10 @@
     -fx-pref-width: 86;
 }
 
+.notReady{
+    -fx-background-color: rgba(193, 0, 0, 1);
+}
+
 .login{
     -fx-background-color: rgba(96, 169, 23, 1);
     

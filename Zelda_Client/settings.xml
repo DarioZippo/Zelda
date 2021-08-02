@@ -5,6 +5,8 @@
     <upKey>UP</upKey>
     <downKey>DOWN</downKey>
     <swordKey>Z</swordKey>
+    <specialKey>C</specialKey>
+    <arrowKey>X</arrowKey>
   </keyAssociation>
   <serverLogAddress>
     <IPAddress>localhost</IPAddress>

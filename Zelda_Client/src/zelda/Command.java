@@ -7,4 +7,6 @@ public enum Command {
     Up,
     Down,
     Sword,
+    Special,
+    Arrow
 }

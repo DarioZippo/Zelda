@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="800.0" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: grey;">
          <children>
@@ -165,6 +165,7 @@
                </image>
             </ImageView>
             <TextField alignment="CENTER" layoutX="360.0" layoutY="40.0" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: rgba(255,255,255,0.5);" text="BOW" />
+            <TextField alignment="CENTER" layoutX="385.0" layoutY="65.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0.5);" text="3" />
          </children>
       </Pane>
       <Pane layoutX="800.0" layoutY="600.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: rgba(96, 169, 23, 1); -fx-border-color: rgba(45, 118, 0, 1); -fx-border-style: solid; -fx-border-width: 4;">

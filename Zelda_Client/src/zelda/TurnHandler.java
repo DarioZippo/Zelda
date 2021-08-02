@@ -47,6 +47,7 @@ class TurnHandler extends Thread{
                 }
                 else{
                     if(gameView.endedAnimationEnemies == true){
+                        System.out.println("endedAnimationEnemies");
                         Platform.runLater(() ->{
                             gameView.update(gameModel);
                         });
@@ -55,6 +56,9 @@ class TurnHandler extends Thread{
                         if(enemyTurnCounter == 2){
                             enemyTurnCounter = 0;
                             turnCharacter = true;
+                            Platform.runLater(() ->{
+                                gameModel.updateCoolDown();
+                            });
                             inputCounter = 0;
                             zelda.listen = true;
                         }

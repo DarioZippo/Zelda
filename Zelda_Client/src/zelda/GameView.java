@@ -37,6 +37,8 @@ public class GameView {
     private Pane root;
     private Pane boardWrapper;
     private ArrayList<ImageView> hearts;
+    private TextField specialTextField;
+    private TextField bowTextField;
     
     public boolean endedAnimationCharacter;
     public boolean endedAnimationEnemies;
@@ -59,10 +61,10 @@ public class GameView {
     private void createBoard(GameModel gameModel) {
         boardWrapper = new Pane();
         
-        int width = gameModel.getBoard().length;
-        int height = gameModel.getBoard()[0].length;
+        int height = gameModel.getBoard().length;
+        int width = gameModel.getBoard()[0].length;
         
-        board = new GraficTile[width][height];
+        board = new GraficTile[height][width];
         
         //root.setPrefSize(WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE);
         boardWrapper.getChildren().addAll(Zelda.tileGroup);
@@ -74,7 +76,7 @@ public class GameView {
                 boolean currentPositionState = gameModel.getTile(x, y).occupied;
                 
                 GraficTile gTile = new GraficTile(x, y, currentPositionState);
-                this.board[x][y] = gTile;
+                this.board[y][x] = gTile;
                 
                 Zelda.tileGroup.getChildren().add(gTile);
             }
@@ -87,12 +89,36 @@ public class GameView {
         this.hearts = hearts;
     }
     
+    public void setSpecialTextField(TextField specialTextField){
+        this.specialTextField = specialTextField;
+    }
+    
+    public void setBowTextField(TextField bowTextField){
+        this.bowTextField = bowTextField;
+    }
+    
+    public void readySpecial(){
+        specialTextField.getStyleClass().remove("notReady");
+    }
+    
+    public void notReadySpecial(){
+        specialTextField.getStyleClass().add("notReady");
+    }
+    
+    public void updateCoolDown(int coolDown){
+        specialTextField.setText("SPECIAL: " + coolDown);
+    }
+    
+    public void removeCoolDown(){
+        specialTextField.setText("SPECIAL");
+    }
+    
     public void showCharacter(GameCharacter character) {
         if(character != null){
             int x = character.getX(), y = character.getY();
             Command direction = character.getDirection();
             //link = new GraficCharacter(coordinateX, coordinateY, this);
-            board[x][y].occupieCharacter(direction);
+            board[y][x].occupieCharacter(direction);
         }
     }  
     
@@ -102,7 +128,7 @@ public class GameView {
             Command direction = enemy.getDirection();
             /*GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, direction, this);
             enemies.add(temp);*/
-            board[x][y].occupieEnemy(direction);
+            board[y][x].occupieEnemy(direction);
         }
     }
     
@@ -134,6 +160,22 @@ public class GameView {
         }
     }
     
+    public void readyBow(){
+        bowTextField.getStyleClass().remove("notReady");
+    }
+    
+    public void notReadyBow(){
+        bowTextField.getStyleClass().add("notReady");
+    }
+    
+    public void updateArrows(int arrows){
+        bowTextField.setText("BOW: " + arrows);
+    }
+    
+    public void removeArrows(){
+        bowTextField.setText("BOW");
+    }
+    
     private void clearBoard(){
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[i].length; j++){
@@ -143,7 +185,7 @@ public class GameView {
     }
     
     public GraficTile getTile(final int x, final int y){
-        return board[x][y];
+        return board[y][x];
     }
     
     public synchronized void moveAnimation(GameCharacter link, GameModel gameModel){
@@ -303,7 +345,7 @@ public class GameView {
         audioClip.play();
         System.out.println(audioClip.isPlaying() + " Volume: " + audioClip.getVolume());
         */
- 
+        
         Image im0 = new Image(tile.occupierPath + link.getDirection() + ".png");
         Image im1 = new Image("file:myFiles/img/swordFirstLink" + link.getDirection() + ".png");
         Image im2 = new Image("file:myFiles/img/swordSecondLink" + link.getDirection() + ".png");
@@ -316,13 +358,13 @@ public class GameView {
         
         tile.getChildren().clear();
         
-        currentImage.setFitHeight(70);
-        currentImage.setFitWidth(70);
+        currentImage.setFitHeight(85);
+        currentImage.setFitWidth(85);
         
         root.getChildren().add(currentImage);
         int last = root.getChildren().size() - 1;
-        root.getChildren().get(last).setLayoutX(cx);
-        root.getChildren().get(last).setLayoutY(cy);
+        root.getChildren().get(last).setLayoutX(cx - 15);
+        root.getChildren().get(last).setLayoutY(cy - 15);
                 
         Timeline timeline = new Timeline(
             new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im1)),
@@ -330,6 +372,7 @@ public class GameView {
             new KeyFrame(Duration.millis(300), new KeyValue(currentImage.imageProperty(), im3)),
             new KeyFrame(Duration.millis(450), new KeyValue(currentImage.imageProperty(), im0))
         );
+        
         timeline.play();
         timeline.setOnFinished((finish) -> {
             root.getChildren().remove(last); 
@@ -388,8 +431,17 @@ public class GameView {
         
     }
     
-    /*
-        special animation
+    public synchronized void specialAnimation(GameCharacter link, GameModel gameModel, boolean hasHit){
+        int x = link.getX(), y = link.getY();
+        GraficTile tile = this.getTile(x, y);
+        
+        /*  NON SUONA NE' IL MEDIAPLAYER NE' L'AUDIOCLIP
+        //Media media = new Media(new File("myFiles/sounds/linkAttack1.mp3").toURI().toString());
+        AudioClip audioClip = new AudioClip(new File("myFiles/sounds/linkAttack1.mp3").toURI().toString()); 
+        audioClip.setCycleCount(10);
+        audioClip.play();
+        System.out.println(audioClip.isPlaying() + " Volume: " + audioClip.getVolume());
+        */
         
         Image im0 = new Image(tile.occupierPath + link.getDirection() + ".png");
         Image im1 = new Image("file:myFiles/img/firstSpecial.png");
@@ -397,17 +449,89 @@ public class GameView {
         Image im3 = new Image("file:myFiles/img/thirdSpecial.png");
         Image im4 = new Image("file:myFiles/img/fourthSpecial.png");
         Image im5 = new Image("file:myFiles/img/fifthSpecial.png");
-    
+        
+        ImageView currentImage = new ImageView(im1);
+        
+        double cx = tile.getLayoutX() + tile.occupier.getLayoutX();
+        double cy = tile.getLayoutY() + tile.occupier.getLayoutY();
+        
+        tile.getChildren().clear();
+        
+        currentImage.setFitHeight(85);
+        currentImage.setFitWidth(85);
+        
+        root.getChildren().add(currentImage);
+        int last = root.getChildren().size() - 1;
+        root.getChildren().get(last).setLayoutX(cx - 15);
+        root.getChildren().get(last).setLayoutY(cy - 15);
+        
         Timeline timeline = new Timeline(
-            new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im1)),
+            new KeyFrame(Duration.millis(75), new KeyValue(currentImage.imageProperty(), im1)),
             new KeyFrame(Duration.millis(150), new KeyValue(currentImage.imageProperty(), im2)),
-            new KeyFrame(Duration.millis(300), new KeyValue(currentImage.imageProperty(), im3)),
-            new KeyFrame(Duration.millis(450), new KeyValue(currentImage.imageProperty(), im4)),
-            new KeyFrame(Duration.millis(600), new KeyValue(currentImage.imageProperty(), im5)),
-            new KeyFrame(Duration.millis(750), new KeyValue(currentImage.imageProperty(), im0))
+            new KeyFrame(Duration.millis(225), new KeyValue(currentImage.imageProperty(), im3)),
+            new KeyFrame(Duration.millis(300), new KeyValue(currentImage.imageProperty(), im4)),
+            new KeyFrame(Duration.millis(375), new KeyValue(currentImage.imageProperty(), im5)),
+            new KeyFrame(Duration.millis(450), new KeyValue(currentImage.imageProperty(), im0))
         );
+        
+        timeline.play();
+        timeline.setOnFinished((finish) -> {
+            root.getChildren().remove(last); 
+            if(hasHit == false){
+                System.out.println("Attacco a vuoto");
+                endedAnimationCharacter = true;//update(gameModel);
+            }
+            System.out.println("Fine animazione attack");
+        });
+        
+    }
     
-    */
+    public synchronized void bowAnimation(GameCharacter link, GameModel gameModel, boolean hasHit){
+        int x = link.getX(), y = link.getY();
+        GraficTile tile = this.getTile(x, y);
+        
+        /*  NON SUONA NE' IL MEDIAPLAYER NE' L'AUDIOCLIP
+        //Media media = new Media(new File("myFiles/sounds/linkAttack1.mp3").toURI().toString());
+        AudioClip audioClip = new AudioClip(new File("myFiles/sounds/linkAttack1.mp3").toURI().toString()); 
+        audioClip.setCycleCount(10);
+        audioClip.play();
+        System.out.println(audioClip.isPlaying() + " Volume: " + audioClip.getVolume());
+        */
+        
+        Image im0 = new Image(tile.occupierPath + link.getDirection() + ".png");
+        Image im1 = new Image("file:myFiles/img/firstArrow" + link.getDirection() + ".png");
+        
+        ImageView currentImage = new ImageView(im1);
+        
+        double cx = tile.getLayoutX() + tile.occupier.getLayoutX();
+        double cy = tile.getLayoutY() + tile.occupier.getLayoutY();
+        
+        tile.getChildren().clear();
+        
+        currentImage.setFitHeight(70);
+        currentImage.setFitWidth(70);
+        
+        root.getChildren().add(currentImage);
+        int last = root.getChildren().size() - 1;
+        root.getChildren().get(last).setLayoutX(cx);
+        root.getChildren().get(last).setLayoutY(cy);
+                
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(400), new KeyValue(currentImage.imageProperty(), im1)),
+            new KeyFrame(Duration.millis(450), new KeyValue(currentImage.imageProperty(), im0))
+        );
+        
+        timeline.play();
+        timeline.setOnFinished((finish) -> {
+            root.getChildren().remove(last); 
+            if(hasHit == false){
+                System.out.println("Attacco a vuoto");
+                endedAnimationCharacter = true;//update(gameModel);
+            }
+            System.out.println("Fine animazione attack");
+        });
+        
+    }
     
     public synchronized void killAnimation(GameTile gameTile, GameModel gameModel){
         int x = gameTile.coordinateX, y = gameTile.coordinateY;

@@ -13,6 +13,8 @@
                                                         <xs:element name="upKey" type="xs:string"/>
 							<xs:element name="downKey" type="xs:string"/>
 							<xs:element name="swordKey" type="xs:string"/>
+                                                        <xs:element name="specialKey" type="xs:string"/>
+                                                        <xs:element name="arrowKey" type="xs:string"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>	

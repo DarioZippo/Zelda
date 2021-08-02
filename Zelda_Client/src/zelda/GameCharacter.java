@@ -99,6 +99,57 @@ class GameCharacter{
         return null;
     }
     
+    public ArrayList<GameTile> special(){
+        int x = currentPositionX, y = currentPositionY;
+        int up = y - 1, down = y + 1;
+        int left = x - 1, right = x + 1;
+        
+        System.out.println("Link position: " + x + ", " + y);
+        
+        GameTile attacked = null;
+        ArrayList<GameTile> attackedPeople = new ArrayList<GameTile>();
+        
+        boolean inMap = false;
+        for(int i = 0; i < 4; i++){
+            switch(i){
+                case 0:
+                    y--;
+                    break;
+                case 1:
+                    x++;
+                    break;
+                case 2:
+                    y++;
+                    break;
+                case 3:
+                    x--;
+                    break;
+            }
+            inMap = checkPosition(x, y);
+            if(inMap == true){
+                attacked = gameModel.getTile(x, y);
+                if(attacked.occupiedEnemy == true){
+                    System.out.println("Colpito in posizione x: " + x + " y: " + y);
+                    attackedPeople.add(attacked); //Aggiungo una piastrella coinvolta
+                }
+                else{
+                    System.out.println("Mancato in posizione x: " + x + " y: " + y);
+                }
+            }
+            else{
+                System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
+            }
+            x = currentPositionX; y = currentPositionY;
+        }
+        if(attackedPeople.size() == 0)
+            return null;
+        return attackedPeople;
+    }
+    
+    public GameTile arrow(){
+        return gameModel.firstEncounterOnAxis(currentPositionX, currentPositionY, direction);
+    }
+    
     public void showPosition(){
         System.out.println("x: " + currentPositionX + " y: " + currentPositionY);
     }
