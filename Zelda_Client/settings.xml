@@ -6,7 +6,7 @@
     <downKey>DOWN</downKey>
     <swordKey>Z</swordKey>
     <specialKey>C</specialKey>
-    <arrowKey>X</arrowKey>
+    <bowKey>X</bowKey>
   </keyAssociation>
   <serverLogAddress>
     <IPAddress>localhost</IPAddress>

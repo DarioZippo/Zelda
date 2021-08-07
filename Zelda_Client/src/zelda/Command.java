@@ -8,5 +8,5 @@ public enum Command {
     Down,
     Sword,
     Special,
-    Arrow
+    Bow
 }

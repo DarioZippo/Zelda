@@ -11,16 +11,16 @@ public class KeyAssociation implements Serializable {
     public KeyCode downKey;
     public KeyCode swordKey;
     public KeyCode specialKey;
-    public KeyCode arrowKey;
+    public KeyCode bowKey;
 
-    public KeyAssociation(KeyCode rightKey, KeyCode leftKey, KeyCode upKey, KeyCode downKey, KeyCode swordKey, KeyCode specialKey, KeyCode arrowKey){
+    public KeyAssociation(KeyCode rightKey, KeyCode leftKey, KeyCode upKey, KeyCode downKey, KeyCode swordKey, KeyCode specialKey, KeyCode bowKey){
         this.rightKey = rightKey;
         this.leftKey = leftKey;
         this.upKey = upKey;
         this.downKey = downKey;
         this.swordKey = swordKey;
         this.specialKey = specialKey;
-        this.arrowKey = arrowKey;
+        this.bowKey = bowKey;
     }
 
     @Override
@@ -33,7 +33,8 @@ public class KeyAssociation implements Serializable {
                     && kas.upKey == this.upKey
                     && kas.downKey == this.downKey
                     && kas.swordKey == this.swordKey
-                    && kas.specialKey == this.specialKey) {
+                    && kas.specialKey == this.specialKey
+                    && kas.bowKey == this.bowKey) {
                 return true;
             } else {
                 return false;

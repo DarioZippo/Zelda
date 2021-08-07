@@ -9,15 +9,13 @@ public class LocalCacheOperations {
 
     private static final String cacheFilePath = "cache.bin";
     
-    public static void salvaCache(GameModel gameModel){
+    public static void saveCache(GameModel gameModel, TurnHandler turnHandler){
         CacheData cacheData = null;
-        if (gameModel.getUser() != null){
-            if(gameModel.isEnded() == false){
-                EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionInterruptGame);
-                cacheData = new CacheData(gameModel.getUser());
-            }
+        if(gameModel.isEnded() == false){
+            EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionInterruptGame);
+            cacheData = new CacheData(gameModel, turnHandler);
         }
-        
+                
         try (
                     ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(cacheFilePath));) {
                 oout.writeObject(cacheData);
@@ -26,13 +24,13 @@ public class LocalCacheOperations {
         }
     }
     
-    public static void ripristinaCache(TextField loginTextField) {
+    public static void restoreCache(Zelda root) {
         if (Files.exists(Paths.get(cacheFilePath))) {
             try (
                     ObjectInputStream oin = new ObjectInputStream(new FileInputStream(cacheFilePath));) {
                 CacheData cacheData = (CacheData) oin.readObject();
                 if(cacheData != null)
-                    loginTextField.setText(cacheData.getUser());
+                    root.rebuildFromCache(cacheData);
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }

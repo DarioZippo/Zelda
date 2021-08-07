@@ -41,6 +41,8 @@ public class Zelda extends Application{
     public static ObservableList<Record> records;
     public static Group tileGroup = new Group();
     
+    TurnHandler t;
+    
     public void start(Stage primaryStage) throws Exception {   
         builder = new Builder();
         gameView = new GameView();
@@ -69,9 +71,10 @@ public class Zelda extends Application{
         bowTextField = builder.getBowTextField();
         ranking = builder.getRanking();
         
-        LocalCacheOperations.ripristinaCache(loginTextField);
         gameView.setSpecialTextField(specialTextField);
         gameView.setBowTextField(bowTextField);
+        
+        LocalCacheOperations.restoreCache(this);
         
         loginButton.setOnAction((ActionEvent ev) -> {
             EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionButton);
@@ -83,9 +86,11 @@ public class Zelda extends Application{
                 
                 gameModel.start();
 
-                TurnHandler t = new TurnHandler(gameModel, gameView, this);
+                t = new TurnHandler(gameModel, gameView, this);
                 t.setDaemon(true);
                 t.start(); 
+                
+                listen = true;
                 
                 loginTextField.setDisable(true);
                 loginButton.setDisable(true);
@@ -120,7 +125,7 @@ public class Zelda extends Application{
         });
         
         primaryStage.setOnCloseRequest((WindowEvent ev) -> {
-            LocalCacheOperations.salvaCache(gameModel);
+            LocalCacheOperations.saveCache(gameModel, t);
             EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionClose);
             Platform.exit();
         });
@@ -184,8 +189,8 @@ public class Zelda extends Application{
                     hasHit = gameModel.executePlayerCommand(Command.Special);
                     return;
                 }
-                if (key == this.keyAssociation.arrowKey) {
-                    hasHit = gameModel.executePlayerCommand(Command.Arrow);
+                if (key == this.keyAssociation.bowKey) {
+                    hasHit = gameModel.executePlayerCommand(Command.Bow);
                     return;
                 }
             }
@@ -207,5 +212,19 @@ public class Zelda extends Application{
         }); 
         loginTextField.setDisable(false);
         loginButton.setDisable(false);
+    }
+    
+    public void rebuildFromCache(CacheData cacheData){
+        gameModel.rebuildFromCache(cacheData);        
+                
+        loginTextField.setText(cacheData.gameCacheData.getUser());
+        loginTextField.setDisable(true);
+        loginButton.setDisable(true);
+        
+        t = new TurnHandler(gameModel, gameView, this, cacheData);
+        t.setDaemon(true);
+        t.start(); 
+        
+        listen = true;
     }
 }

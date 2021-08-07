@@ -15,7 +15,7 @@ public class GameModel{
     private ArrayList<GameEnemy> enemies;
     private int waveMagnitude; 
     
-    private int linkLives;
+    private int lives;
     private int coolDown;
     private boolean readySpecial;
     private int arrows;
@@ -25,7 +25,7 @@ public class GameModel{
     public GameModel(GameView gameView){
         createContent();
         
-        linkLives = 3;
+        lives = 3;
         
         coolDown = 0;
         readySpecial = true;
@@ -33,7 +33,7 @@ public class GameModel{
         enemies = new ArrayList<GameEnemy>();
         
         this.gameView = gameView;
-        ended = false;
+        ended = true;
     }
     
     private void createContent() {
@@ -61,7 +61,12 @@ public class GameModel{
         return points;
     }
     
+    public int getWaveMagnitude(){
+        return waveMagnitude;
+    }
+    
     public void start(){
+        ended = false;
         points = 0;
         waveMagnitude = 1;
         spawn();
@@ -71,7 +76,7 @@ public class GameModel{
     }
     
     public void spawn(){
-        spawnCharacter((WIDTH / 2) - 1, (HEIGHT / 2) - 1, this);
+        spawnCharacter((WIDTH / 2) - 1, (HEIGHT / 2) - 1, Command.Down, this);
         for(int i = 0; i < waveMagnitude; i++){
             randomSpawnEnemy(this);
         }
@@ -83,10 +88,10 @@ public class GameModel{
         }
     }
     
-    private void spawnCharacter(final int coordinateX, final int coordinateY, GameModel gameModel) {
+    private void spawnCharacter(final int coordinateX, final int coordinateY, Command direction, GameModel gameModel) {
         if(board[coordinateY][coordinateX].occupied == false)
         {
-            link = new GameCharacter(coordinateX, coordinateY, gameModel);
+            link = new GameCharacter(coordinateX, coordinateY, direction, gameModel);
             
             board[coordinateY][coordinateX].occupieCharacter(link);
             
@@ -96,10 +101,9 @@ public class GameModel{
             System.out.println("Spawn personaggio occupato");
     }  
     
-    private boolean spawnEnemy(final int coordinateX, final int coordinateY, GameModel gameModel){
+    private boolean spawnEnemy(final int coordinateX, final int coordinateY, Command direction, GameModel gameModel){
         if(board[coordinateY][coordinateX].occupied == false)
         {
-            Command direction = randomDirection();
             GameEnemy temp = new GameEnemy(coordinateX, coordinateY, direction, gameModel);
             enemies.add(temp);
             
@@ -119,7 +123,7 @@ public class GameModel{
         
         boolean spawned = false;
         while(spawned == false){
-            spawned = spawnEnemy(x, y, gameModel);
+            spawned = spawnEnemy(x, y, randomDirection(), gameModel);
         }
     }
     
@@ -174,10 +178,10 @@ public class GameModel{
                 }
                 System.out.println("Non disponibile, cooldown: " + coolDown);
                 break;
-            case Arrow:
+            case Bow:
                 if(arrows != 0){
                     updateArrows();
-                    attacked = link.arrow();
+                    attacked = link.bow();
                     gameView.bowAnimation(link, this, attacked != null);
                     if(attacked != null){
                         combat(link, attacked);
@@ -192,7 +196,7 @@ public class GameModel{
     
     public void resetCoolDown(){
         readySpecial = false;
-        coolDown = 1;
+        coolDown = 2;
         gameView.notReadySpecial();
         gameView.updateCoolDown(coolDown);
     }
@@ -210,6 +214,14 @@ public class GameModel{
         }
     }
     
+    public boolean getReadySpecial(){
+        return readySpecial;
+    }
+    
+    public int getCoolDown(){
+        return coolDown;
+    }
+    
     public void resetArrows(){
         arrows = 2;
         gameView.updateArrows(arrows);
@@ -223,6 +235,10 @@ public class GameModel{
             System.out.println("A FACC RO CAZZ");
             gameView.notReadyBow();
         }
+    }
+    
+    public int getArrows(){
+        return arrows;
     }
     
     //Versione in cui Link attacca
@@ -264,17 +280,21 @@ public class GameModel{
     }
     
     public void attackedCharacter(){
-        linkLives--;
-        gameView.updateLives(linkLives);
-        if(linkLives == 0){
+        lives--;
+        gameView.updateLives(lives);
+        if(lives == 0){
             System.out.println("Hai perso");
             ended = true;
         }
     }
     
     public void resetLives(){
-        linkLives = 3;
+        lives = 3;
         gameView.resetLives();
+    }
+    
+    public int getLives(){
+        return lives;
     }
     
     private void clearBoard(){
@@ -292,7 +312,7 @@ public class GameModel{
     }
     
     public void endGame(){
-        ended = false;
+        ended = true;
         clear();
         
         gameView.readyBow();
@@ -338,5 +358,42 @@ public class GameModel{
             }
         }
         return target;
+    }
+    
+    public void rebuildFromCache(CacheData cacheData){
+        ended = false;
+        
+        user = cacheData.gameCacheData.getUser();
+        points = cacheData.gameCacheData.getPoints();
+        
+        lives = cacheData.gameCacheData.getLives();
+        for(int i = 3; i > lives; i--){
+            gameView.updateLives(i - 1);
+        }
+        
+        waveMagnitude = cacheData.gameCacheData.getWaveMagnitude();
+        
+        ElementCacheData temp;
+        for(int i = 0; i < cacheData.elements.size(); i++){
+            temp = cacheData.elements.get(i);
+            if(temp.enemy == false){
+                spawnCharacter(temp.x, temp.y, temp.direction, this);
+            }
+            else{
+                spawnEnemy(temp.x, temp.y, temp.direction, this);
+            }
+        }
+        
+        arrows = cacheData.gameCacheData.getArrows();
+        coolDown = cacheData.gameCacheData.getCoolDown();
+        readySpecial = cacheData.gameCacheData.getReadySpecial();
+        
+        gameView.updateArrows(arrows);
+        if(arrows == 0)
+            gameView.notReadyBow();
+        if(coolDown > 0){
+            gameView.notReadySpecial();
+            gameView.updateCoolDown(coolDown);
+        }
     }
 }

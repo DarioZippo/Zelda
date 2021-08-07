@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 
 class TurnHandler extends Thread{
-    public boolean turnCharacter;
+    private boolean characterTurn;
     private int enemyIndex;
     private int inputCounter;
     private int enemyTurnCounter;
@@ -20,23 +20,73 @@ class TurnHandler extends Thread{
         this.gameView = gameView;
         this.zelda = zelda;
         
-        turnCharacter = true;
+        characterTurn = true;
         enemyIndex = 0;
         inputCounter = 0;
         enemyTurnCounter = 0;
     }
+    
+    TurnHandler(GameModel gameModel, GameView gameView, Zelda zelda, CacheData cacheData){
+        super();
+        this.gameModel = gameModel;
+        this.gameView = gameView;
+        this.zelda = zelda;
+        
+        characterTurn = true;
+        if(cacheData.gameCacheData.getCharacterTurn() == false){
+            inputCounter = 0;
+        }
+        else{
+            inputCounter = cacheData.gameCacheData.getInputCounter();
+        }
+        
+        enemyIndex = 0;
+        enemyTurnCounter = 0;
+        /*
+        characterTurn = cacheData.gameCacheData.getCharacterTurn();
+        if(characterTurn == true){
+            zelda.listen = true;
+        }
+        else{
+            zelda.listen = false;
+        }
+        enemyIndex = cacheData.gameCacheData.getEnemyIndex();
+        
+        inputCounter = cacheData.gameCacheData.getInputCounter();
+        enemyTurnCounter = cacheData.gameCacheData.getEnemyTurnCounter();
+        
+        gameView.endedAnimationCurrentEnemy = true;
+        */
+    }
+    
+    public boolean getCharacterTurn(){
+        return characterTurn;
+    }
+    
+    public int getEnemyIndex(){
+        return enemyIndex;
+    }
+    
+    public int getInputCounter(){
+        return inputCounter;
+    }
+    
+    public int getEnemyTurnCounter(){
+        return enemyTurnCounter;
+    }
+    
     public synchronized void run(){
-        zelda.listen = true;
         while(true){
+            //System.out.println("characterTurn: " + characterTurn + " endedAnimationEnemies " + gameView.endedAnimationEnemies + " endedAnimationCurrentEnemy " + gameView.endedAnimationCurrentEnemy);
             try {
-                if(turnCharacter == true){
+                if(characterTurn == true){
                     if(gameView.endedAnimationCharacter == true){
                         Platform.runLater(() ->{
                             gameView.update(gameModel);
                         });
                         inputCounter++;
                         if(inputCounter == 3){
-                            turnCharacter = false;
+                            characterTurn = false;
                             Platform.runLater(() ->{
                                 gameModel.EnemiesTurn(enemyIndex);
                             });
@@ -55,7 +105,7 @@ class TurnHandler extends Thread{
                         enemyTurnCounter++;
                         if(enemyTurnCounter == 2){
                             enemyTurnCounter = 0;
-                            turnCharacter = true;
+                            characterTurn = true;
                             Platform.runLater(() ->{
                                 gameModel.updateCoolDown();
                             });

@@ -17,11 +17,11 @@ public class EventLoggerXML {
 
     private static final String filePathXSD = "entrataLog.xsd";
 
-    public static final String eventDescriptionStart = "ApplicazioneAvviata";
+    public static final String eventDescriptionStart = "Applicazione avviata";
     public static final String eventDescriptionClose = "Applicazione chiusa";
 
     public static final String eventDescriptionUsername = "Username inserito";
-    public static final String eventDescriptionButton = "Pulsante - premuto";
+    public static final String eventDescriptionButton = "Pulsante premuto";
 
     public static final String eventDescriptionStartGame = "Partita avviata";
     public static final String eventDescriptionEndGame = "Partita terminata";

@@ -11,12 +11,12 @@ class GameCharacter{
     
     private Command direction;
     
-    GameCharacter(final int coordinateX, final int coordinateY, GameModel gameModel) {
+    GameCharacter(final int coordinateX, final int coordinateY, Command direction, GameModel gameModel) {
         currentPositionX = coordinateX;
         currentPositionY = coordinateY;
         this.gameModel = gameModel;
         
-        direction = Command.Down;
+        this.direction = direction;
     }
     
     public int getX(){
@@ -146,7 +146,7 @@ class GameCharacter{
         return attackedPeople;
     }
     
-    public GameTile arrow(){
+    public GameTile bow(){
         return gameModel.firstEncounterOnAxis(currentPositionX, currentPositionY, direction);
     }
     
