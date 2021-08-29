@@ -23,8 +23,6 @@ import static zelda.GameUtils.*;
 public class Zelda extends Application{       
     public boolean listen;
     
-    private Character link;
-    
     private Pane root;
     private TextField specialTextField;
     private TextField bowTextField;
@@ -47,13 +45,12 @@ public class Zelda extends Application{
         builder = new Builder();
         gameView = new GameView();
         gameModel = new GameModel(gameView);
-        dbManager = new DBManager();
         
         loadSettings();
         
         listen = false;
         
-        dbManager.caricaClientiDB();
+        dbManager.loadRecordsDB();
         //dbManager.caricaClientiPredefiniti();
         /*
         Record record = new Record("MasterZi", 100);
@@ -140,6 +137,7 @@ public class Zelda extends Application{
         this.keyAssociation = settingsXML.keyAssociation;
         
         EventLoggerXML.setServerLogAddress(settingsXML.serverLogAddress.IPAddress, settingsXML.serverLogAddress.port);
+        dbManager = new DBManager(settingsXML.dbAddress.IPAddress, settingsXML.dbAddress.port, settingsXML.dbUsername, settingsXML.dbPassword);
         //OperazioniDatabase.impostaIndirizzoDatabase(impostazioniXml.indirizzoDatabase.indirizzoIP, impostazioniXml.indirizzoDatabase.porta);
         
         EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionStart);
@@ -204,7 +202,7 @@ public class Zelda extends Application{
     public void endGame(){
         listen = false;
         Record record = new Record(gameModel.getUser(), gameModel.getPoints());
-        dbManager.registraClienteDB(record);
+        dbManager.registerRecordDB(record);
         ranking.setItems(records);
         gameModel.endGame();
         Platform.runLater(() ->{

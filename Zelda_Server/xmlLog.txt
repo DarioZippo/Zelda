@@ -5818,3 +5818,147 @@
   <eventDescription>Applicazione chiusa</eventDescription>
 </zelda.EventLogXML>
 
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:49:11.249</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:49:21.0</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:49:21.008</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:49:21.019</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:49:30.548</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:49:39.271</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:50:48.251</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:50:59.822</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:53:35.074</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:53:43.812</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:54:06.168</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:55:02.232</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:56:02.359</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:56:59.774</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:05.636</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:05.643</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:05.656</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:12.023</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:13.736</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:15.202</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:18.495</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:21.177</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:24.376</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.56.1</IPAddress>
+  <eventTimestamp>2021-08-08 16:57:27.068</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+

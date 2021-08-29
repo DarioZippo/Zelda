@@ -12,4 +12,10 @@
     <IPAddress>localhost</IPAddress>
     <port>9200</port>
   </serverLogAddress>
+  <dbAddress>
+    <IPAddress>localhost</IPAddress>
+    <port>3306</port>
+  </dbAddress>
+  <dbUsername>root</dbUsername>
+  <dbPassword></dbPassword>
 </zelda.SettingsXML>

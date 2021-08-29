@@ -19,8 +19,12 @@
 					</xs:complexType>
 				</xs:element>	
                                 
-                                <xs:element name="serverLogAddress" type="ServerAddress"/>	
+                                <xs:element name="serverLogAddress" type="ServerAddress"/>
+                                <xs:element name="dbAddress" type="ServerAddress"/>	
                                 
+                                <xs:element name="dbUsername" type="xs:string"/>
+                                <xs:element name="dbPassword" type="xs:string"/>
+
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

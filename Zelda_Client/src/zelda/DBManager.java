@@ -5,7 +5,18 @@ import javafx.collections.FXCollections;
 
 public class DBManager {
     
-    public void caricaClientiPredefiniti() {
+    String dbAddress;
+    int port;
+    String username, password;
+    
+    DBManager(String dbAddress, int port, String username, String password){
+        this.dbAddress = dbAddress;
+        this.port = port;
+        this.username = username;
+        this.password = password;
+    }
+    
+    public void loadDefaultRecords() {
         Zelda.records = FXCollections.observableArrayList(
             new Record("AAA", 50),
             new Record("BBB", 40),
@@ -15,9 +26,9 @@ public class DBManager {
         );
     }
 
-    public void caricaClientiDB() {
+    public void loadRecordsDB() {
         Zelda.records = FXCollections.observableArrayList();
-        try ( Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/zelda", "root","");
+        try ( Connection co = DriverManager.getConnection("jdbc:mysql://" + dbAddress + ":" + port + "/zelda", username, password);
             Statement st = co.createStatement(); 
         ) {
             ResultSet rs = st.executeQuery("SELECT * FROM record"); 
@@ -28,29 +39,29 @@ public class DBManager {
         } catch (SQLException e) {System.err.println(e.getMessage());}
     }
 
-    public void registraClienteDB(Record record) {
+    public void registerRecordDB(Record record) {
         Zelda.records = FXCollections.observableArrayList();
         String user = new String(record.getUser());
         int points = record.getPoints();
-        try ( Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/zelda", "root","");
+        try ( Connection co = DriverManager.getConnection("jdbc:mysql://" + dbAddress + ":" + port + "/zelda", username, password);
             PreparedStatement ps = co.prepareStatement("INSERT INTO record VALUES (?, ?)"); 
         ) {
             ps.setString(1, user); ps.setInt(2, points);
             System.out.println("rows affected: " + ps.executeUpdate());
-            caricaClientiDB();
+            loadRecordsDB();
         } catch (SQLException e) {System.err.println(e.getMessage());}
     }
 
-    public void eliminaClienteDB(Record record) {
+    public void deleteRecordDB(Record record) {
         Zelda.records = FXCollections.observableArrayList();
         String user = new String(record.getUser());
         int points = record.getPoints();
-        try ( Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/zelda", "root","");
+        try ( Connection co = DriverManager.getConnection("jdbc:mysql://" + dbAddress + ":" + port + "/zelda", username, password);
             PreparedStatement ps = co.prepareStatement("DELETE FROM record WHERE id = ?"); 
         ) {
             ps.setString(1, user);
             System.out.println("rows affected:" + ps.executeUpdate()); 
-            caricaClientiDB();
+            loadRecordsDB();
         } catch (SQLException e) {System.err.println(e.getMessage());}
     }
     /*
