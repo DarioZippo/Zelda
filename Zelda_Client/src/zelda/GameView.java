@@ -23,10 +23,7 @@ import javafx.scene.media.*;
 import javafx.scene.transform.*;
 import javafx.stage.Screen;
 import javafx.util.Duration;
-import static zelda.GameUtils.HEIGHT;
-import static zelda.GameUtils.TILE_SIZE;
-import static zelda.GameUtils.WIDTH;
-import static zelda.GameUtils.randomDirection;
+import static zelda.GameUtils.*;
 
 public class GameView {
     private GraficTile[][] board;

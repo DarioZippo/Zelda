@@ -6112,3 +6112,33 @@
   <eventDescription>Partita terminata</eventDescription>
 </zelda.EventLogXML>
 
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-05 17:52:12.884</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-05 17:52:25.604</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-05 17:52:27.813</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-05 22:08:50.643</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-05 22:08:54.715</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+

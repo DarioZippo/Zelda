@@ -1,8 +1,7 @@
 package zelda;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Platform;
+import java.util.logging.*;
+import javafx.application.*;
 
 class TurnHandler extends Thread{
     private boolean characterTurn;

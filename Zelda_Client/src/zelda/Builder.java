@@ -1,20 +1,13 @@
 package zelda;
 
 import java.util.ArrayList;
-import javafx.event.ActionEvent;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import static zelda.GameUtils.HEIGHT;
-import static zelda.GameUtils.WIDTH;
 
 public class Builder {
     private Pane root;
@@ -45,18 +38,18 @@ public class Builder {
         return ranking;
     }
     
-    public Parent createContent(GameModel gameModel, GameView gameView){
+    public Parent createContent(GameView gameView){
         root = new Pane();
-        createCharacterStat(gameModel);
+        createCharacterStat();
         gameView.setHearts(hearts);
-        createKeyTutorial(gameModel);
-        createLogin(gameModel);
-        createRanking(gameModel);
+        createKeyTutorial();
+        createLogin();
+        createRanking();
         
         return root;
     }
     
-    private void createCharacterStat(GameModel gameModel){
+    private void createCharacterStat(){
         Pane characterStat = new Pane();
         characterStat.setLayoutY(600);
         //characterStat.setPrefHeight(150.0); 
@@ -111,7 +104,7 @@ public class Builder {
         root.getChildren().add(characterStat);
     }
     
-    private void createKeyTutorial(GameModel gameModel){
+    private void createKeyTutorial(){
         Pane keyTutorial = new Pane();
         keyTutorial.setLayoutX(300);
         keyTutorial.setLayoutY(600);
@@ -209,7 +202,7 @@ public class Builder {
         root.getChildren().add(keyTutorial);
     }
     
-    private void createLogin(GameModel gameModel){
+    private void createLogin(){
         Pane login = new Pane();
         login.setLayoutX(800);
         login.setLayoutY(600);
@@ -238,7 +231,7 @@ public class Builder {
         root.getChildren().add(login);
     }
     
-    private void createRanking(GameModel gameModel){
+    private void createRanking(){
         VBox rankingWrapper = new VBox();
         rankingWrapper.setLayoutX(800);
         rankingWrapper.setLayoutY(0);

@@ -1,24 +1,15 @@
 package zelda;
 
-import java.awt.Transparency;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javafx.application.*;
 import javafx.collections.ObservableList;
 import javafx.event.*;
-import javafx.geometry.Pos;
 import javafx.scene.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.*;    
 import javafx.scene.input.*;
-import javafx.scene.image.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.*;
-import static zelda.GameUtils.*;
 
 public class Zelda extends Application{       
     public boolean listen;
@@ -60,7 +51,7 @@ public class Zelda extends Application{
         root = new Pane();
         
         root.getChildren().add(gameView.createContent(gameModel));
-        root.getChildren().add(builder.createContent(gameModel, gameView) );
+        root.getChildren().add(builder.createContent(gameView) );
         
         loginButton = builder.getLoginButton();
         loginTextField = builder.getLoginTextField();

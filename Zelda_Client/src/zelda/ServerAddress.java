@@ -1,6 +1,6 @@
 package zelda;
 
-import java.io.Serializable;
+import java.io.*;
 
 public class ServerAddress implements Serializable {
 

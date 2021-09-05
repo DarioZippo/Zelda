@@ -25,10 +25,7 @@ public class EventLoggerXML {
 
     public static final String eventDescriptionStartGame = "Partita avviata";
     public static final String eventDescriptionEndGame = "Partita terminata";
-    /*
-    public static final String descrizioneEventoPausaPartita = "Partita messa in pausa";
-    public static final String descrizioneEventoRipresaPartita = "Partita ripresa";
-    */
+    
     public static final String eventDescriptionInterruptGame = "Partita interrotta";
     public static final String eventDescriptionRecoverGame = "Partita recuperata";
 

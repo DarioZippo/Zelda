@@ -1,6 +1,5 @@
 package zelda;
 
-import javafx.scene.input.KeyCode;
 import java.io.Serializable;
 
 public class SettingsXML implements Serializable {

@@ -10,10 +10,6 @@ public class GameUtils {
     public static final int WIDTH = 8;
     public static final int HEIGHT = 6;
     
-    private GameUtils() {
-        throw new RuntimeException("You cannot instantiate me!");
-    }
-    
     public static boolean checkPosition(final int x, final int y) {
         boolean result = true;
         
