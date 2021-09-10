@@ -9,11 +9,14 @@ public class DBManager {
     int port;
     String username, password;
     
-    DBManager(String dbAddress, int port, String username, String password){
+    int limit;
+    
+    DBManager(String dbAddress, int port, String username, String password, int limit){
         this.dbAddress = dbAddress;
         this.port = port;
         this.username = username;
         this.password = password;
+        this.limit = limit;
     }
     
     public void loadDefaultRecords() {
@@ -29,12 +32,13 @@ public class DBManager {
     public void loadRecordsDB() {
         Zelda.records = FXCollections.observableArrayList();
         try ( Connection co = DriverManager.getConnection("jdbc:mysql://" + dbAddress + ":" + port + "/zelda", username, password);
-            Statement st = co.createStatement(); 
+            Statement st = co.createStatement();
         ) {
-            ResultSet rs = st.executeQuery("SELECT * FROM record"); 
+            st.setMaxRows(limit);
+            ResultSet rs = st.executeQuery("SELECT * FROM record ORDER BY points DESC"); 
             while (rs.next()){ 
                 Zelda.records.add(new Record(rs.getString("user"), rs.getInt("points")));
-                System.out.println("" + rs.getString("user") + rs.getInt("points"));
+                //System.out.println("" + rs.getString("user") + rs.getInt("points"));
             }
         } catch (SQLException e) {System.err.println(e.getMessage());}
     }
@@ -57,7 +61,7 @@ public class DBManager {
         String user = new String(record.getUser());
         int points = record.getPoints();
         try ( Connection co = DriverManager.getConnection("jdbc:mysql://" + dbAddress + ":" + port + "/zelda", username, password);
-            PreparedStatement ps = co.prepareStatement("DELETE FROM record WHERE id = ?"); 
+            PreparedStatement ps = co.prepareStatement("DELETE FROM record WHERE user = ? AND points = ?"); 
         ) {
             ps.setString(1, user);
             System.out.println("rows affected:" + ps.executeUpdate()); 

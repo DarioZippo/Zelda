@@ -30,6 +30,7 @@ class GameEnemy{
         return direction;
     }
     
+    //Scelta della strada migliore per raggiungere il personaggio del giocatore
     private Command chooseDirection(){
         Command direction;
         
@@ -79,7 +80,7 @@ class GameEnemy{
         boolean inMap = checkPosition(x, y);
         if(inMap == true){
             if(gameModel.getTile(x, y).occupied == true){
-                System.out.println("Protagonista in posizione x: " + x + " y: " + y);
+                //System.out.println("Protagonista in posizione x: " + x + " y: " + y);
                 return false;
             }
             gameModel.getTile(this.x, this.y).free();//Libero    
@@ -89,7 +90,7 @@ class GameEnemy{
             return true; //confermo lo spostamento
         }
         else{
-            System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
+            //System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
             return false;
         }
     }
@@ -98,6 +99,7 @@ class GameEnemy{
         System.out.println("Enemy " + "x: " + x + " y: " + y);
     }
     
+    //Verifica della possibilità di attaccare il giocatore
     private boolean attackableCharacter(){
         int x = this.x, y = this.y;
         switch(direction){
@@ -132,23 +134,24 @@ class GameEnemy{
         gameModel.attackedCharacter();
     }
     
+    //Gestione di un turno automatico
     public void turn(GameView gameView){
         if(attackableCharacter() == true){
             attack();
-            System.out.println("Attaccabile");
+            //System.out.println("Attaccabile");
             gameView.attackAnimation(this, gameModel);
         }
         else{
-            System.out.println("Non attaccabile");
+            //System.out.println("Non attaccabile");
             boolean mooved = false;
             Command direction = chooseDirection();
             mooved = move(direction);
             if(mooved == true){
                gameView.moveAnimation(this, gameModel);
             }
-            else if(attackableCharacter() == true){
+            else if(attackableCharacter() == true){ //Se adiacente al personaggio, si girerà per poi attaccare
                 attack();
-                System.out.println("Attaccabile");
+                //System.out.println("Attaccabile");
                 gameView.attackAnimation(this, gameModel);
             }
             else{

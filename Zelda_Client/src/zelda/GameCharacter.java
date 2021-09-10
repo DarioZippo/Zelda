@@ -51,7 +51,7 @@ class GameCharacter{
         boolean inMap = checkPosition(x, y);
         if(inMap == true){
             if(gameModel.getTile(x, y).occupied == true){
-                System.out.println("Nemico in posizione x: " + x + " y: " + y);
+                //System.out.println("Nemico in posizione x: " + x + " y: " + y);
                 return false;
             }
             gameModel.getTile(this.x, this.y).free();//Libero    
@@ -61,7 +61,7 @@ class GameCharacter{
             return true; //confermo lo spostamento
         }
         else{
-            System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
+            //System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
             return false;
         }
     }
@@ -86,15 +86,15 @@ class GameCharacter{
         if(inMap == true){
             GameTile attacked = gameModel.getTile(x, y);
             if(attacked.occupiedEnemy == true){
-                System.out.println("Colpito in posizione x: " + x + " y: " + y);
+                //System.out.println("Colpito in posizione x: " + x + " y: " + y);
                 return attacked;//Gestici combattimento
             }
             if(attacked.occupiedEnemy == false){
-                System.out.println("Mancato in posizione x: " + x + " y: " + y);
+                //System.out.println("Mancato in posizione x: " + x + " y: " + y);
             }
         }
         else{
-            System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
+            //System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
         }
         return null;
     }
@@ -102,7 +102,7 @@ class GameCharacter{
     public ArrayList<GameTile> special(){
         int x = this.x, y = this.y;
         
-        System.out.println("Link position: " + x + ", " + y);
+        //System.out.println("Link position: " + x + ", " + y);
         
         GameTile attacked = null;
         ArrayList<GameTile> attackedPeople = new ArrayList<GameTile>();
@@ -127,15 +127,15 @@ class GameCharacter{
             if(inMap == true){
                 attacked = gameModel.getTile(x, y);
                 if(attacked.occupiedEnemy == true){
-                    System.out.println("Colpito in posizione x: " + x + " y: " + y);
+                    //System.out.println("Colpito in posizione x: " + x + " y: " + y);
                     attackedPeople.add(attacked); //Aggiungo una piastrella coinvolta
                 }
                 else{
-                    System.out.println("Mancato in posizione x: " + x + " y: " + y);
+                    //System.out.println("Mancato in posizione x: " + x + " y: " + y);
                 }
             }
             else{
-                System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
+                //System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
             }
             x = this.x; y = this.y;
         }

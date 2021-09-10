@@ -21,7 +21,8 @@ public class ReaderSettingsXML {
             new ServerAddress("localhost", 9200),
             new ServerAddress("localhost", 3306),
             "root",
-            ""
+            "",
+            5
     );
 
     public static SettingsXML readSettings() {

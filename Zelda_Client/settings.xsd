@@ -24,7 +24,9 @@
                                 
                                 <xs:element name="dbUsername" type="xs:string"/>
                                 <xs:element name="dbPassword" type="xs:string"/>
-
+                                
+                                <xs:element name="dbLimit" type="xs:int"/>
+                                
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

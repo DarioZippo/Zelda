@@ -25,7 +25,7 @@ class TurnHandler extends Thread{
         enemyTurnCounter = 0;
     }
     
-    TurnHandler(GameModel gameModel, GameView gameView, Zelda zelda, CacheData cacheData){
+    TurnHandler(GameModel gameModel, GameView gameView, Zelda zelda, CacheData cacheData){ //Overloading del costruttore per il ripristino dalla cache
         super();
         this.gameModel = gameModel;
         this.gameView = gameView;
@@ -59,7 +59,7 @@ class TurnHandler extends Thread{
         return enemyTurnCounter;
     }
     
-    public synchronized void run(){
+    public synchronized void run(){ //1
         while(true){
             //System.out.println("characterTurn: " + characterTurn + " endedAnimationEnemies " + gameView.endedAnimationEnemies + " endedAnimationCurrentEnemy " + gameView.endedAnimationCurrentEnemy);
             try {
@@ -81,7 +81,7 @@ class TurnHandler extends Thread{
                 }
                 else{
                     if(gameView.endedAnimationEnemies == true){
-                        System.out.println("endedAnimationEnemies");
+                        //System.out.println("endedAnimationEnemies");
                         Platform.runLater(() ->{
                             gameView.updateBoard(gameModel);
                         });
@@ -102,7 +102,7 @@ class TurnHandler extends Thread{
                             });
                     }
                     else if(gameView.endedAnimationCurrentEnemy == true){
-                        System.out.println("endedAnimationCurrentEnemy");
+                        //System.out.println("endedAnimationCurrentEnemy");
                         Platform.runLater(() ->{
                             gameView.updateBoard(gameModel);
                         });
@@ -131,3 +131,7 @@ class TurnHandler extends Thread{
         }
     }
 }
+
+/*
+1: Il thread verifica ogni 100 millisecondi lo stato delle animazioni, per gestire l'aggiornamento del rendering grafico e lo stato dei turni
+*/

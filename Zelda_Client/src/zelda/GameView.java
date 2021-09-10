@@ -93,7 +93,6 @@ public class GameView {
         if(character != null){
             int x = character.getX(), y = character.getY();
             Command direction = character.getDirection();
-            //link = new GraficCharacter(coordinateX, coordinateY, this);
             board[y][x].occupieCharacter(direction);
         }
     }  
@@ -102,8 +101,6 @@ public class GameView {
         if(enemy != null){
             int x = enemy.getX(), y = enemy.getY();
             Command direction = enemy.getDirection();
-            /*GraficEnemy temp = new GraficEnemy(coordinateX, coordinateY, direction, this);
-            enemies.add(temp);*/
             board[y][x].occupieEnemy(direction);
         }
     }
@@ -124,7 +121,7 @@ public class GameView {
     }
     
     public void updateLives(int lives){
-        System.out.println("Aggiorno cuore: " + lives + "Mentre ho " + hearts.size() + " cuori");
+        //System.out.println("Aggiorno cuore: " + lives + "Mentre ho " + hearts.size() + " cuori");
         Image emptyHeart = new Image("file:myFiles/img/emptyHeart.png");
         hearts.get(lives).setImage(emptyHeart);
     }
@@ -203,7 +200,7 @@ public class GameView {
         root.getChildren().get(last).setLayoutX(cx);
         root.getChildren().get(last).setLayoutY(cy);
         
-        Timeline timeline = new Timeline(
+        Timeline timeline = new Timeline( //1
             new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im2)),
             new KeyFrame(Duration.millis(250), new KeyValue(currentImage.imageProperty(), im3)),
             new KeyFrame(Duration.millis(400), new KeyValue(currentImage.imageProperty(), im2)),
@@ -211,7 +208,7 @@ public class GameView {
         );
         timeline.play();
         
-        TranslateTransition translate = new TranslateTransition();
+        TranslateTransition translate = new TranslateTransition(); //2
         translate.setNode(currentImage);
         translate.setDuration(Duration.millis(600));
         
@@ -275,7 +272,7 @@ public class GameView {
         root.getChildren().get(last).setLayoutX(cx);
         root.getChildren().get(last).setLayoutY(cy);
         
-        TranslateTransition translate = new TranslateTransition();
+        TranslateTransition translate = new TranslateTransition(); //2
         translate.setNode(currentImage);
         translate.setDuration(Duration.millis(600));
         
@@ -326,7 +323,7 @@ public class GameView {
         root.getChildren().get(last).setLayoutX(cx - 15);
         root.getChildren().get(last).setLayoutY(cy - 15);
                 
-        Timeline timeline = new Timeline(
+        Timeline timeline = new Timeline( //1
             new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im1)),
             new KeyFrame(Duration.millis(150), new KeyValue(currentImage.imageProperty(), im2)),
             new KeyFrame(Duration.millis(300), new KeyValue(currentImage.imageProperty(), im3)),
@@ -378,7 +375,7 @@ public class GameView {
         root.getChildren().get(last).setLayoutX(cx);
         root.getChildren().get(last).setLayoutY(cy);
                 
-        Timeline timeline = new Timeline(
+        Timeline timeline = new Timeline( //1
             new KeyFrame(Duration.millis(100), new KeyValue(currentImage.imageProperty(), im1)),
             new KeyFrame(Duration.millis(400), new KeyValue(currentImage.imageProperty(), null))
         );
@@ -417,7 +414,7 @@ public class GameView {
         root.getChildren().get(last).setLayoutX(cx - 15);
         root.getChildren().get(last).setLayoutY(cy - 15);
         
-        Timeline timeline = new Timeline(
+        Timeline timeline = new Timeline( //1
             new KeyFrame(Duration.millis(75), new KeyValue(currentImage.imageProperty(), im1)),
             new KeyFrame(Duration.millis(150), new KeyValue(currentImage.imageProperty(), im2)),
             new KeyFrame(Duration.millis(225), new KeyValue(currentImage.imageProperty(), im3)),
@@ -460,7 +457,7 @@ public class GameView {
         root.getChildren().get(last).setLayoutX(cx);
         root.getChildren().get(last).setLayoutY(cy);
                 
-        Timeline timeline = new Timeline(
+        Timeline timeline = new Timeline( //1
             new KeyFrame(Duration.millis(400), new KeyValue(currentImage.imageProperty(), im1)),
             new KeyFrame(Duration.millis(450), new KeyValue(currentImage.imageProperty(), im0))
         );
@@ -496,7 +493,7 @@ public class GameView {
         root.getChildren().get(last).setLayoutX(cx);
         root.getChildren().get(last).setLayoutY(cy);
         
-        FadeTransition fade = new FadeTransition();
+        FadeTransition fade = new FadeTransition(); //3
         fade.setNode(imageView);
         fade.setDuration(Duration.millis(450));
         fade.setFromValue(1);
@@ -512,3 +509,9 @@ public class GameView {
         clearBoard();
     }
 }
+
+/*
+1 : Reference per la classe Timeline: https://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html
+2 : Reference per la classe TranslateTransition: https://docs.oracle.com/javafx/2/api/javafx/animation/TranslateTransition.html
+3 : Reference per la classe FadeTransition: https://docs.oracle.com/javafx/2/api/javafx/animation/FadeTransition.html
+*/

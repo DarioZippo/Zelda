@@ -31,9 +31,12 @@ public class EventLoggerXML {
 
     public static final String eventDescriptionKeyAssociation = "Caricate associazioni tasti personalizzate. Destra: - Sinistra: - Su: - Giù: - Sword: - Special: - Bow: -";
     public static final String placeholderDescription  = "-";
+    
+    public static final String eventDescriptionOkKey = "Premuto tasto ok: -";
+    public static final String eventDescriptionNotOkKey = "Premuto tasto non ok: -";
 
     public static void setServerLogAddress(String address, int port){
-        System.out.println("Setta");
+        //System.out.println("Setta");
         EventLoggerXML.serverLogAddress = new InetSocketAddress(address, port);
     }
     

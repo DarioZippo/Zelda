@@ -241,7 +241,6 @@ public class GameModel{
         return arrows;
     }
     
-    //Versione in cui Link attacca
     public void combat(GameCharacter attacker, GameTile attackedTile){
         kill(attackedTile.getOccupierEnemy());
         gameView.killAnimation(attackedTile, this);
@@ -251,7 +250,7 @@ public class GameModel{
     public void kill(GameEnemy attacked){
         enemies.remove(attacked);
         points += 10;
-        if(enemies.isEmpty() || enemies.size() == 0){
+        if(enemies.isEmpty() || enemies.size() == 0){ //spawna una nuova ondata
             waveMagnitude++;
             spawnWave();
         }
@@ -265,7 +264,7 @@ public class GameModel{
         }
         else
         {
-            System.out.println("Nemico numero: " + i);
+            //System.out.println("Nemico numero: " + i);
             enemies.get(i).turn(gameView);
         }
     }
@@ -319,6 +318,7 @@ public class GameModel{
         return this.ended;
     }
     
+    //Funzione utilizzata per individuare il nemico colpito da bow()
     public GameTile firstEncounterOnAxis(int x, int y, Command direction){
         int yModifier = 0, xModifier = 0;
         switch(direction){

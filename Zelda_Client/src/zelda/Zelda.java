@@ -39,7 +39,7 @@ public class Zelda extends Application{
         
         loadSettings();
         
-        listen = false;
+        listen = false; //1
         
         dbManager.loadRecordsDB();
         
@@ -82,7 +82,7 @@ public class Zelda extends Application{
         
         Scene scene = new Scene(root);
         
-        URL url = this.getClass().getResource("Style.css");
+        URL url = this.getClass().getResource("Style.css"); //2
         if (url == null) {
             System.out.println("Resource not found");
         }
@@ -98,12 +98,9 @@ public class Zelda extends Application{
             }
         });
         
-        scene.setOnMousePressed(event -> {
-            if (!ranking.equals(event.getSource())) {
-                ranking.getParent().requestFocus();
-            }
-            if (!loginTextField.equals(event.getSource())) {
-                loginTextField.getParent().requestFocus();
+        scene.setOnMousePressed(event -> { //3
+            if (!ranking.equals(event.getSource()) && !loginTextField.equals(event.getSource())) {
+                root.requestFocus();
             }
         });
         
@@ -123,11 +120,11 @@ public class Zelda extends Application{
         this.keyAssociation = settingsXML.keyAssociation;
         
         EventLoggerXML.setServerLogAddress(settingsXML.serverLogAddress.IPAddress, settingsXML.serverLogAddress.port);
-        dbManager = new DBManager(settingsXML.dbAddress.IPAddress, settingsXML.dbAddress.port, settingsXML.dbUsername, settingsXML.dbPassword);
+        dbManager = new DBManager(settingsXML.dbAddress.IPAddress, settingsXML.dbAddress.port, settingsXML.dbUsername, settingsXML.dbPassword, settingsXML.dbLimit);
         
         EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionStart);
         
-        if (!settingsXML.keyAssociation.equals(ReaderSettingsXML.defaultSettings.keyAssociation)) {   
+        if (!settingsXML.keyAssociation.equals(ReaderSettingsXML.defaultSettings.keyAssociation)) {   //4
             String eventDescription = EventLoggerXML.eventDescriptionKeyAssociation.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.rightKey.getName());
             eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.leftKey.getName());
             eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.upKey.getName());
@@ -145,37 +142,44 @@ public class Zelda extends Application{
             //System.out.println("Command: " + key);
             boolean mooved;
             boolean hasHit;
+            boolean isOk = false;
             if (this.keyAssociation != null) {
                 if (key == this.keyAssociation.rightKey) {
                     mooved = gameModel.executePlayerCommand(Command.Right);
-                    return;
+                    isOk = true;
                 }
                 if (key == this.keyAssociation.leftKey) {
                     mooved = gameModel.executePlayerCommand(Command.Left);
-                    return;
+                    isOk = true;
                 }
                 if (key == this.keyAssociation.upKey) {
                     mooved = gameModel.executePlayerCommand(Command.Up);
-                    return;
+                    isOk = true;
                 }
                 if (key == this.keyAssociation.downKey) {
                     mooved = gameModel.executePlayerCommand(Command.Down);
-                    return;
+                    isOk = true;
                 }
                 if (key == this.keyAssociation.swordKey) {
                     hasHit = gameModel.executePlayerCommand(Command.Sword);
-                    return;
+                    isOk = true;
                 }
                 if (key == this.keyAssociation.specialKey) {
                     hasHit = gameModel.executePlayerCommand(Command.Special);
-                    return;
+                    isOk = true;
                 }
                 if (key == this.keyAssociation.bowKey) {
                     hasHit = gameModel.executePlayerCommand(Command.Bow);
+                    isOk = true;
+                }
+                if(isOk == true){
+                    String eventDescription = EventLoggerXML.eventDescriptionOkKey.replaceFirst(EventLoggerXML.placeholderDescription, key.getName());
+                    EventLoggerXML.recordEvent(eventDescription);
                     return;
                 }
             }
-            //System.out.println("Non è un comando");
+            String eventDescription = EventLoggerXML.eventDescriptionNotOkKey.replaceFirst(EventLoggerXML.placeholderDescription, key.getName());
+            EventLoggerXML.recordEvent(eventDescription);
             listen = true;
         }
         /*
@@ -214,3 +218,10 @@ public class Zelda extends Application{
         listen = true;
     }
 }
+
+/*
+1: Variabile che definisce lo stato di ascolto, da parte dell'applicazione, per nuovi input
+2: Applico uno style sheet in formato CSS per definire lo stile dell'interfaccia
+3: Se clicco al di fuori della tabella o del campo login, viene rimosso il focus dai suddetti elementi
+4: Se i tasti non corrispondono alle impostazioni di default, creo un messaggio di log che descriva le nuove impostazioni
+*/

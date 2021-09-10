@@ -6562,3 +6562,757 @@
   <eventDescription>Applicazione chiusa</eventDescription>
 </zelda.EventLogXML>
 
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 10:43:07.043</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 10:43:07.056</eventTimestamp>
+  <eventDescription>Caricate associazioni tasti personalizzate. Destra: Right Sinistra: Left Su: Up Giù: Down Sword: A Special: S Bow: D</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 10:43:11.155</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 10:43:11.158</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 10:43:11.163</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 10:43:49.55</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 10:43:52.449</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:25:22.88</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:25:35.588</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:29:00.704</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:29:08.121</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:29:17.657</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:29:25.046</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:30:29.937</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 21:30:39.126</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:19:44.171</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:19:59.118</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:20:20.952</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:20:24.712</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:21:13.735</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:21:29.858</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:21:45.0</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:21:50.666</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:22:07.596</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:22:12.054</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:23:08.728</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:23:11.616</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:30:11.614</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:30:20.112</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:12.266</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:22.141</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:36.987</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:39.894</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:39.897</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:39.903</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:45.337</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:49.82</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:49.824</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:49.828</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:53.949</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:58.537</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:58.54</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:31:58.544</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:32:07.072</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:32:09.215</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:39.567</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:45.591</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:45.594</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:45.6</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:54.435</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:59.215</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:59.219</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:37:59.227</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:38:07.255</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:38:09.768</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:47:49.737</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:48:06.334</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:48:06.337</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:48:06.342</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:48:27.586</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 22:48:32.113</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:09.161</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:17.297</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:17.3</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:17.306</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:18.358</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Right</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:18.509</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Z</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:20.785</eventTimestamp>
+  <eventDescription>Premuto tasto non ok: F</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:22.509</eventTimestamp>
+  <eventDescription>Premuto tasto non ok: G</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:24.348</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Left</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:26.739</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:04:29.713</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:08:49.8</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:08:59.043</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:03.329</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:03.333</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:03.338</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:04.505</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Down</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:05.483</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Down</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:06.269</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Right</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:09.012</eventTimestamp>
+  <eventDescription>Premuto tasto non ok: G</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:09.336</eventTimestamp>
+  <eventDescription>Premuto tasto non ok: W</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:09.83</eventTimestamp>
+  <eventDescription>Premuto tasto non ok: H</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:10.85</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Up</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:11.116</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Z</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:14.993</eventTimestamp>
+  <eventDescription>Premuto tasto ok: C</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:18.694</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Up</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:18.853</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Up</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:19.01</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Up</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:21.38</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:09:26.634</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:04.211</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:06.688</eventTimestamp>
+  <eventDescription>Pulsante premuto</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:06.692</eventTimestamp>
+  <eventDescription>Username inserito</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:06.697</eventTimestamp>
+  <eventDescription>Partita avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:07.732</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Right</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:08.433</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Right</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:09.43</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Down</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:11.742</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Left</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:12.554</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Z</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:14.234</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Left</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:18.18</eventTimestamp>
+  <eventDescription>Premuto tasto ok: C</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:19.654</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Right</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:20.537</eventTimestamp>
+  <eventDescription>Premuto tasto ok: X</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:25.819</eventTimestamp>
+  <eventDescription>Partita interrotta</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:25.83</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:31.022</eventTimestamp>
+  <eventDescription>Applicazione avviata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:32.853</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Up</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:33.212</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Z</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:34.825</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Left</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:37.132</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Left</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:37.988</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Up</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:38.479</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Z</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:44.566</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Z</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:45.49</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Up</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:46.664</eventTimestamp>
+  <eventDescription>Premuto tasto ok: Z</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:49.901</eventTimestamp>
+  <eventDescription>Partita terminata</eventDescription>
+</zelda.EventLogXML>
+
+<zelda.EventLogXML>
+  <applicationName>Zelda</applicationName>
+  <IPAddress>192.168.1.5</IPAddress>
+  <eventTimestamp>2021-09-10 23:10:55.301</eventTimestamp>
+  <eventDescription>Applicazione chiusa</eventDescription>
+</zelda.EventLogXML>
+

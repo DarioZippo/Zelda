@@ -2,6 +2,7 @@
   <xs:element name="zelda.EventLogXML">
     <xs:complexType>
       <xs:sequence>
+        <xs:element type="xs:string" name="applicationName"/>
         <xs:element type="xs:string" name="IPAddress"/>
         <xs:element type="xs:string" name="eventTimestamp"/>
         <xs:element type="xs:string" name="eventDescription"/>

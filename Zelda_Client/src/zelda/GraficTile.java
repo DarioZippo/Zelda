@@ -60,7 +60,7 @@ public class GraficTile extends StackPane {
         this.getStyleClass().add("occupied");
         this.getStyleClass().add("enemy");
         
-        this.occupierPath = "file:myFiles/img/staticKnight"; //+ direction.toString() + ".png";
+        this.occupierPath = "file:myFiles/img/staticKnight";
         
         this.occupier = new ImageView(occupierPath + direction.toString() + ".png");
         this.occupier.setFitHeight(70);
