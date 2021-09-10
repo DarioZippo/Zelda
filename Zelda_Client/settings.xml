@@ -1,5 +1,6 @@
 <zelda.SettingsXML>
   <keyAssociation>
+    <!--
     <rightKey>RIGHT</rightKey>
     <leftKey>LEFT</leftKey>
     <upKey>UP</upKey>
@@ -7,6 +8,14 @@
     <swordKey>Z</swordKey>
     <specialKey>C</specialKey>
     <bowKey>X</bowKey>
+    -->
+    <rightKey>RIGHT</rightKey>
+    <leftKey>LEFT</leftKey>
+    <upKey>UP</upKey>
+    <downKey>DOWN</downKey>
+    <swordKey>A</swordKey>
+    <specialKey>S</specialKey>
+    <bowKey>D</bowKey>
   </keyAssociation>
   <serverLogAddress>
     <IPAddress>localhost</IPAddress>

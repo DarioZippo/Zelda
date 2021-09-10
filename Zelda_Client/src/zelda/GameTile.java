@@ -1,10 +1,8 @@
 package zelda;
 
-import java.util.*;
-
 public class GameTile {
-    public int coordinateX;
-    public int coordinateY;
+    public int x;
+    public int y;
     
     public boolean occupied;
     public boolean occupiedCharacter;
@@ -13,9 +11,9 @@ public class GameTile {
     private GameCharacter occupierCharacter;
     private GameEnemy occupierEnemy;
     
-    public GameTile(final int coordinateX, final int coordinateY, final boolean occupied) {
-        this.coordinateX = coordinateX;
-        this.coordinateY = coordinateY;
+    public GameTile(final int x, final int y, final boolean occupied) {
+        this.x = x;
+        this.y = y;
         this.occupied = occupied;
     }   
     

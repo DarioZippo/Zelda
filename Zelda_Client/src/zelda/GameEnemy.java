@@ -4,26 +4,26 @@ import static zelda.GameUtils.*;
 
 class GameEnemy{
     
-    private int currentPositionX;
-    private int currentPositionY;   
+    private int x;
+    private int y;   
     private GameModel gameModel;
     
     private Command direction;
     
     GameEnemy(final int coordinateX, final int coordinateY, Command direction, GameModel gameModel) {
-        currentPositionX = coordinateX;
-        currentPositionY = coordinateY;
+        x = coordinateX;
+        y = coordinateY;
         this.direction = direction;
         
         this.gameModel = gameModel;
     }
     
     public int getX(){
-        return currentPositionX;
+        return x;
     }
     
     public int getY(){
-        return currentPositionY;
+        return y;
     }
     
     public Command getDirection(){
@@ -36,11 +36,11 @@ class GameEnemy{
         int x = gameModel.getCharacter().getX();
         int y = gameModel.getCharacter().getY();
         
-        int distX = Math.abs(x - this.currentPositionX);
-        int distY = Math.abs(y - this.currentPositionY);
+        int distX = Math.abs(x - this.x);
+        int distY = Math.abs(y - this.y);
         
         if(distX >= distY){
-            if(this.currentPositionX - x > 0){
+            if(this.x - x > 0){
                 direction = Command.Left;
             }
             else{
@@ -48,7 +48,7 @@ class GameEnemy{
             }
         }
         else{
-            if(this.currentPositionY - y > 0){
+            if(this.y - y > 0){
                 direction = Command.Up;
             }
             else{
@@ -60,7 +60,7 @@ class GameEnemy{
     }   
     
     public boolean move(Command direction){
-        int x = currentPositionX, y = currentPositionY;
+        int x = this.x, y = this.y;
         switch(direction){
             case Left:
                 x--;
@@ -82,10 +82,10 @@ class GameEnemy{
                 System.out.println("Protagonista in posizione x: " + x + " y: " + y);
                 return false;
             }
-            gameModel.getTile(currentPositionX, currentPositionY).free();//Libero    
-            currentPositionX = x;
-            currentPositionY = y;
-            gameModel.getTile(currentPositionX, currentPositionY).occupieEnemy(this);//Occupo 
+            gameModel.getTile(this.x, this.y).free();//Libero    
+            this.x = x;
+            this.y = y;
+            gameModel.getTile(this.x, this.y).occupieEnemy(this);//Occupo 
             return true; //confermo lo spostamento
         }
         else{
@@ -95,15 +95,11 @@ class GameEnemy{
     }
     
     public void showPosition(){
-        System.out.println("Enemy " + "x: " + currentPositionX + " y: " + currentPositionY);
-    }
-    
-    public GameModel getGameModel(){
-        return this.gameModel;
+        System.out.println("Enemy " + "x: " + x + " y: " + y);
     }
     
     private boolean attackableCharacter(){
-        int x = currentPositionX, y = currentPositionY;
+        int x = this.x, y = this.y;
         switch(direction){
             case Left:
                 x--;

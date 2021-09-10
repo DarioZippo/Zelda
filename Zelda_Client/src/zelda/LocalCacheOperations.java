@@ -15,7 +15,7 @@ public class LocalCacheOperations {
         }
                 
         try (
-                    ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(cacheFilePath));) {
+                ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(cacheFilePath));) {
                 oout.writeObject(cacheData);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -25,7 +25,7 @@ public class LocalCacheOperations {
     public static void restoreCache(Zelda root) {
         if (Files.exists(Paths.get(cacheFilePath))) {
             try (
-                    ObjectInputStream oin = new ObjectInputStream(new FileInputStream(cacheFilePath));) {
+                ObjectInputStream oin = new ObjectInputStream(new FileInputStream(cacheFilePath));) {
                 CacheData cacheData = (CacheData) oin.readObject();
                 if(cacheData != null)
                     root.rebuildFromCache(cacheData);

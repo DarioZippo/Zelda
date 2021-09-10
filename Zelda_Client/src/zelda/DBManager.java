@@ -64,18 +64,4 @@ public class DBManager {
             loadRecordsDB();
         } catch (SQLException e) {System.err.println(e.getMessage());}
     }
-    /*
-    public void aggiornaClienteDB(Record record) {
-        Zelda.records = FXCollections.observableArrayList();
-        String user = new String(record.getUser());
-        int points = record.getPoints();
-        try ( Connection co = DriverManager.getConnection("jdbc:mysql://localhost:3306/zelda", "root","");
-            PreparedStatement ps = co.prepareStatement("UPDATE record SET deposito = deposito + ? WHERE id = ?"); //10
-        ) {
-            ps.setInt(1,200); ps.setString(2,"michael@boston.us");
-            System.out.println("rows affected:" + ps.executeUpdate()); 
-            caricaClientiDB();
-        } catch (SQLException e) {System.err.println(e.getMessage());}
-    }
-    */
 }

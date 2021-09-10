@@ -1,7 +1,6 @@
 package zelda;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class GameCacheData implements Serializable{
     private String user;
@@ -29,14 +28,6 @@ public class GameCacheData implements Serializable{
         
         characterTurn = turnHandler.getCharacterTurn();
         inputCounter = turnHandler.getInputCounter();
-        /*
-        enemyIndex = turnHandler.getEnemyIndex();
-        if(enemyIndex > 0)
-            enemyIndex--;//Per via di un bug
-        enemyTurnCounter = turnHandler.getEnemyTurnCounter();
-        if(enemyTurnCounter > 0)
-            enemyTurnCounter--;//Per via di un bug
-        */
     }
     
     public String getUser(){

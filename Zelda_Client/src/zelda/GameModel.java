@@ -1,6 +1,5 @@
 package zelda;
 
-import static java.lang.Thread.sleep;
 import java.util.*;
 import static zelda.GameUtils.*;
 
@@ -20,10 +19,10 @@ public class GameModel{
     private boolean readySpecial;
     private int arrows;
     
-    public boolean ended;
+    private boolean ended;
     
     public GameModel(GameView gameView){
-        createContent();
+        createBoard();
         
         lives = 3;
         
@@ -36,7 +35,7 @@ public class GameModel{
         ended = true;
     }
     
-    private void createContent() {
+    private void createBoard() {
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
                 GameTile currentTile = new GameTile(x, y, false);
@@ -69,9 +68,11 @@ public class GameModel{
         ended = false;
         points = 0;
         waveMagnitude = 1;
+        
         spawn();
         resetLives();
         resetArrows();
+        
         EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionStartGame);
     }
     
@@ -150,12 +151,12 @@ public class GameModel{
         switch(command){
             case Left: case Right: case Up: case Down:
                 mooved = link.move(command);
-                System.out.println("Spostamento avvenuto, mooved = " + mooved);
+                //System.out.println("Spostamento avvenuto, mooved = " + mooved);
                 if(mooved == true){
                     gameView.moveAnimation(link, this);
                     return true;
                 }
-                link.showPosition();
+                //link.showPosition();
                 break;
             case Sword:
                 attacked = link.attack();
@@ -190,7 +191,7 @@ public class GameModel{
                 }
                 break;
         }
-        gameView.endedAnimationCharacter = true;//gameView.update(this);
+        gameView.endedAnimationCharacter = true;
         return result;
     }
     
@@ -232,7 +233,6 @@ public class GameModel{
         arrows--;
         gameView.updateArrows(arrows);
         if(arrows == 0){
-            System.out.println("A FACC RO CAZZ");
             gameView.notReadyBow();
         }
     }
@@ -246,20 +246,11 @@ public class GameModel{
         kill(attackedTile.getOccupierEnemy());
         gameView.killAnimation(attackedTile, this);
         attackedTile.free();
-        //attacked.free();
-        //GameUpdate
-        //gameView.update(this);
-        //DropOggetto
     }
     
     public void kill(GameEnemy attacked){
         enemies.remove(attacked);
         points += 10;
-        /*
-        for(int i = 0; i < 2; i++){
-            randomSpawnEnemy(this);
-        }
-        */
         if(enemies.isEmpty() || enemies.size() == 0){
             waveMagnitude++;
             spawnWave();
@@ -320,6 +311,7 @@ public class GameModel{
         
         gameView.readySpecial();
         gameView.removeCoolDown();
+        
         EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionEndGame);
     }
     

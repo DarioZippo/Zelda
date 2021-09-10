@@ -5,26 +5,26 @@ import static zelda.GameUtils.*;
 
 class GameCharacter{
     
-    private int currentPositionX;
-    private int currentPositionY;   
+    private int x;
+    private int y;   
     private GameModel gameModel;
     
     private Command direction;
     
     GameCharacter(final int coordinateX, final int coordinateY, Command direction, GameModel gameModel) {
-        currentPositionX = coordinateX;
-        currentPositionY = coordinateY;
+        x = coordinateX;
+        y = coordinateY;
         this.gameModel = gameModel;
         
         this.direction = direction;
     }
     
     public int getX(){
-        return currentPositionX;
+        return x;
     }
     
     public int getY(){
-        return currentPositionY;
+        return y;
     }
     
     public Command getDirection(){
@@ -32,7 +32,7 @@ class GameCharacter{
     }  
     
     public boolean move(Command direction){
-        int x = currentPositionX, y = currentPositionY;
+        int x = this.x, y = this.y;
         switch(direction){
             case Left:
                 x--;
@@ -54,10 +54,10 @@ class GameCharacter{
                 System.out.println("Nemico in posizione x: " + x + " y: " + y);
                 return false;
             }
-            gameModel.getTile(currentPositionX, currentPositionY).free();//Libero    
-            currentPositionX = x;
-            currentPositionY = y;
-            gameModel.getTile(currentPositionX, currentPositionY).occupieCharacter(this);//Occupo 
+            gameModel.getTile(this.x, this.y).free();//Libero    
+            this.x = x;
+            this.y = y;
+            gameModel.getTile(this.x, this.y).occupieCharacter(this);//Occupo 
             return true; //confermo lo spostamento
         }
         else{
@@ -67,7 +67,7 @@ class GameCharacter{
     }
     
     public GameTile attack(){
-        int x = currentPositionX, y = currentPositionY;
+        int x = this.x, y = this.y;
         switch(direction){
             case Left:
                 x--;
@@ -100,9 +100,7 @@ class GameCharacter{
     }
     
     public ArrayList<GameTile> special(){
-        int x = currentPositionX, y = currentPositionY;
-        int up = y - 1, down = y + 1;
-        int left = x - 1, right = x + 1;
+        int x = this.x, y = this.y;
         
         System.out.println("Link position: " + x + ", " + y);
         
@@ -139,7 +137,7 @@ class GameCharacter{
             else{
                 System.out.println("Fuori mappa in posizione x: " + x + " y: " + y);
             }
-            x = currentPositionX; y = currentPositionY;
+            x = this.x; y = this.y;
         }
         if(attackedPeople.size() == 0)
             return null;
@@ -147,10 +145,10 @@ class GameCharacter{
     }
     
     public GameTile bow(){
-        return gameModel.firstEncounterOnAxis(currentPositionX, currentPositionY, direction);
+        return gameModel.firstEncounterOnAxis(x, y, direction);
     }
     
     public void showPosition(){
-        System.out.println("x: " + currentPositionX + " y: " + currentPositionY);
+        System.out.println("x: " + x + " y: " + y);
     }
 }

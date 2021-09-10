@@ -21,7 +21,7 @@ public class Zelda extends Application{
     private TextField loginTextField;
     private TableView<Record> ranking;
     
-    private Builder builder;
+    private InterfaceBuilder interfaceBuilder;
     private GameView gameView;
     private GameModel gameModel;
     private DBManager dbManager;
@@ -30,10 +30,10 @@ public class Zelda extends Application{
     public static ObservableList<Record> records;
     public static Group tileGroup = new Group();
     
-    TurnHandler t;
+    private TurnHandler t;
     
     public void start(Stage primaryStage) throws Exception {   
-        builder = new Builder();
+        interfaceBuilder = new InterfaceBuilder();
         gameView = new GameView();
         gameModel = new GameModel(gameView);
         
@@ -42,22 +42,17 @@ public class Zelda extends Application{
         listen = false;
         
         dbManager.loadRecordsDB();
-        //dbManager.caricaClientiPredefiniti();
-        /*
-        Record record = new Record("MasterZi", 100);
-        dbManager.registraClienteDB(record);
-        */
         
         root = new Pane();
         
         root.getChildren().add(gameView.createContent(gameModel));
-        root.getChildren().add(builder.createContent(gameView) );
+        root.getChildren().add(interfaceBuilder.createContent(gameView) );
         
-        loginButton = builder.getLoginButton();
-        loginTextField = builder.getLoginTextField();
-        specialTextField = builder.getKeyCTextField();
-        bowTextField = builder.getBowTextField();
-        ranking = builder.getRanking();
+        loginButton = interfaceBuilder.getLoginButton();
+        loginTextField = interfaceBuilder.getLoginTextField();
+        specialTextField = interfaceBuilder.getSpecialTextField();
+        bowTextField = interfaceBuilder.getBowTextField();
+        ranking = interfaceBuilder.getRanking();
         
         gameView.setSpecialTextField(specialTextField);
         gameView.setBowTextField(bowTextField);
@@ -89,9 +84,9 @@ public class Zelda extends Application{
         
         URL url = this.getClass().getResource("Style.css");
         if (url == null) {
-            System.out.println("Resource not found. Aborting.");
+            System.out.println("Resource not found");
         }
-        String css = url.toExternalForm(); 
+        String css = url.toExternalForm();
         scene.getStylesheets().add(css);
         
         scene.setOnKeyReleased((KeyEvent ev) -> {
@@ -129,45 +124,42 @@ public class Zelda extends Application{
         
         EventLoggerXML.setServerLogAddress(settingsXML.serverLogAddress.IPAddress, settingsXML.serverLogAddress.port);
         dbManager = new DBManager(settingsXML.dbAddress.IPAddress, settingsXML.dbAddress.port, settingsXML.dbUsername, settingsXML.dbPassword);
-        //OperazioniDatabase.impostaIndirizzoDatabase(impostazioniXml.indirizzoDatabase.indirizzoIP, impostazioniXml.indirizzoDatabase.porta);
         
         EventLoggerXML.recordEvent(EventLoggerXML.eventDescriptionStart);
         
-        if (!settingsXML.keyAssociation.equals(ReaderSettingsXML.defaultSettings.keyAssociation)) {      //1
-            String descrizioneEvento = EventLoggerXML.eventDescriptionKeyAssociation.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.rightKey.getName());
-            descrizioneEvento = descrizioneEvento.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.leftKey.getName());
-            descrizioneEvento = descrizioneEvento.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.upKey.getName());
-            descrizioneEvento = descrizioneEvento.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.downKey.getName());
-            descrizioneEvento = descrizioneEvento.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.swordKey.getName());
-            EventLoggerXML.recordEvent(descrizioneEvento);
+        if (!settingsXML.keyAssociation.equals(ReaderSettingsXML.defaultSettings.keyAssociation)) {   
+            String eventDescription = EventLoggerXML.eventDescriptionKeyAssociation.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.rightKey.getName());
+            eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.leftKey.getName());
+            eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.upKey.getName());
+            eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.downKey.getName());
+            eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.swordKey.getName());
+            eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.specialKey.getName());
+            eventDescription = eventDescription.replaceFirst(EventLoggerXML.placeholderDescription, settingsXML.keyAssociation.bowKey.getName());
+            EventLoggerXML.recordEvent(eventDescription);
         }
     }
     
     private synchronized void playerInput(KeyCode key) throws InterruptedException {
         if(listen == true){
             listen = false;
-            System.out.println("Command: " + key);
-            boolean mooved; //per il momento è inutile
-            boolean hasHit; //per il momento è inutile
+            //System.out.println("Command: " + key);
+            boolean mooved;
+            boolean hasHit;
             if (this.keyAssociation != null) {
                 if (key == this.keyAssociation.rightKey) {
                     mooved = gameModel.executePlayerCommand(Command.Right);
-                    //gameView.executePlayerCommand(Command.Right, mooved);
                     return;
                 }
                 if (key == this.keyAssociation.leftKey) {
                     mooved = gameModel.executePlayerCommand(Command.Left);
-                    //gameView.executePlayerCommand(Command.Left, mooved);
                     return;
                 }
                 if (key == this.keyAssociation.upKey) {
                     mooved = gameModel.executePlayerCommand(Command.Up);
-                    //gameView.executePlayerCommand(Command.Up, mooved);
                     return;
                 }
                 if (key == this.keyAssociation.downKey) {
                     mooved = gameModel.executePlayerCommand(Command.Down);
-                    //gameView.executePlayerCommand(Command.Down, mooved);
                     return;
                 }
                 if (key == this.keyAssociation.swordKey) {
@@ -183,22 +175,27 @@ public class Zelda extends Application{
                     return;
                 }
             }
-            System.out.println("Sfigato");
+            //System.out.println("Non è un comando");
             listen = true;
         }
+        /*
         else
             System.out.println("Aspetta");
+        */
     }
     
     public void endGame(){
         listen = false;
+        
         Record record = new Record(gameModel.getUser(), gameModel.getPoints());
         dbManager.registerRecordDB(record);
         ranking.setItems(records);
+        
         gameModel.endGame();
         Platform.runLater(() ->{
             gameView.endGame();
         }); 
+        
         loginTextField.setDisable(false);
         loginButton.setDisable(false);
     }

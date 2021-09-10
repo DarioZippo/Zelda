@@ -9,21 +9,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Builder {
+public class InterfaceBuilder {
     private Pane root;
     private ArrayList<ImageView> hearts;
-    private TextField keyCText; //da cambiare
-    private TextField keyXText; //da cambiare
+    private TextField specialTextField;
+    private TextField bowTextField;
     private TextField loginTextField;
     private Button loginButton;
     private TableView<Record> ranking;
     
-    public TextField getKeyCTextField(){
-        return keyCText;
+    public TextField getSpecialTextField(){
+        return specialTextField;
     }
     
     public TextField getBowTextField(){
-        return keyXText;
+        return bowTextField;
     }
     
     public Button getLoginButton(){
@@ -52,8 +52,6 @@ public class Builder {
     private void createCharacterStat(){
         Pane characterStat = new Pane();
         characterStat.setLayoutY(600);
-        //characterStat.setPrefHeight(150.0); 
-        //characterStat.setPrefWidth(300.0);
         characterStat.getStyleClass().add("characterStat");
         
         Image linkHeadImage = new Image("file:myFiles/img/linkHead.png");
@@ -76,7 +74,6 @@ public class Builder {
         heart0.setLayoutX(75); 
         heart0.setLayoutY(86);
         heart0.getStyleClass().add("heart");
-        //heart0.setId("Heart0");
         
         hearts.add(heart0);
         
@@ -86,7 +83,6 @@ public class Builder {
         heart1.setLayoutX(125); 
         heart1.setLayoutY(86);
         heart1.getStyleClass().add("heart");
-        //heart1.setId("Heart1");
         
         hearts.add(heart1);
         
@@ -96,7 +92,6 @@ public class Builder {
         heart2.setLayoutX(176); 
         heart2.setLayoutY(86);
         heart2.getStyleClass().add("heart");
-        //heart2.setId("Heart2");
         
         hearts.add(heart2);
         characterStat.getChildren().addAll(hearts);
@@ -108,8 +103,6 @@ public class Builder {
         Pane keyTutorial = new Pane();
         keyTutorial.setLayoutX(300);
         keyTutorial.setLayoutY(600);
-        //keyTutorial.setPrefHeight(150.0); 
-        //keyTutorial.setPrefWidth(500.0);
         keyTutorial.getStyleClass().add("keyTutorial");
         
         Image keyDownImage = new Image("file:myFiles/img/keyDown.png");
@@ -158,8 +151,6 @@ public class Builder {
         TextField keyZText = new TextField("SWORD");
         keyZText.setLayoutX(58);
         keyZText.setLayoutY(40);
-        //keyZText.setPrefHeight(25);
-        //keyZText.setPrefWidth(86);
         keyZText.setDisable(true);
         keyZText.getStyleClass().add("keyText");
         
@@ -172,15 +163,15 @@ public class Builder {
         keyC.setLayoutX(233); 
         keyC.setLayoutY(5);
         
-        keyCText = new TextField("SPECIAL");
-        keyCText.setLayoutX(208);
-        keyCText.setLayoutY(40);
-        keyCText.setPrefHeight(25);
-        keyCText.setPrefWidth(86);
-        keyCText.setDisable(true);
-        keyCText.getStyleClass().add("keyText");
+        specialTextField = new TextField("SPECIAL");
+        specialTextField.setLayoutX(208);
+        specialTextField.setLayoutY(40);
+        specialTextField.setPrefHeight(25);
+        specialTextField.setPrefWidth(86);
+        specialTextField.setDisable(true);
+        specialTextField.getStyleClass().add("keyText");
         
-        keyTutorial.getChildren().addAll(keyC, keyCText);
+        keyTutorial.getChildren().addAll(keyC, specialTextField);
         
         Image keyXImage = new Image("file:myFiles/img/keyX.png");
         ImageView keyX = new ImageView(keyXImage);
@@ -189,15 +180,13 @@ public class Builder {
         keyX.setLayoutX(385); 
         keyX.setLayoutY(5);
         
-        keyXText = new TextField("BOW");
-        keyXText.setLayoutX(360);
-        keyXText.setLayoutY(40);
-        //keyXText.setPrefHeight(25);
-        //keyXText.setPrefWidth(86);
-        keyXText.setDisable(true);
-        keyXText.getStyleClass().add("keyText");
+        bowTextField = new TextField("BOW");
+        bowTextField.setLayoutX(360);
+        bowTextField.setLayoutY(40);
+        bowTextField.setDisable(true);
+        bowTextField.getStyleClass().add("keyText");
         
-        keyTutorial.getChildren().addAll(keyX, keyXText);
+        keyTutorial.getChildren().addAll(keyX, bowTextField);
         
         root.getChildren().add(keyTutorial);
     }
@@ -206,8 +195,6 @@ public class Builder {
         Pane login = new Pane();
         login.setLayoutX(800);
         login.setLayoutY(600);
-        //login.setPrefHeight(150.0); 
-        //login.setPrefWidth(300.0);
         login.getStyleClass().add("login");
         
         loginTextField = new TextField();
@@ -221,8 +208,6 @@ public class Builder {
         loginButton.setLayoutX(101);
         loginButton.setLayoutY(75);
         loginButton.setMnemonicParsing(false);
-        //loginButton.setPrefHeight(35);
-        //loginButton.setPrefWidth(98);
         loginButton.setText("PLAY");
         loginButton.getStyleClass().add("loginButton");
         
@@ -235,8 +220,6 @@ public class Builder {
         VBox rankingWrapper = new VBox();
         rankingWrapper.setLayoutX(800);
         rankingWrapper.setLayoutY(0);
-        //ranking.setPrefHeight(600.0); 
-        //ranking.setPrefWidth(300.0);
         rankingWrapper.getStyleClass().add("rankingWrapper");
         
         Label rankingTitle = new Label("Records");

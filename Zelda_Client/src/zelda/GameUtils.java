@@ -2,8 +2,6 @@ package zelda;
 
 import java.util.*;
 
-/**
- */
 public class GameUtils {
     
     public static final int TILE_SIZE = 100;
@@ -24,7 +22,7 @@ public class GameUtils {
     public static Command randomDirection(){
         Command direction = null;
         Random rand = new Random();
-        int randInt = rand.nextInt( 4 ); //Generates a number in [0, 1, .., 3]
+        int randInt = rand.nextInt( 4 ); //Genera un numero tra [0, 1, .., 3]
         
         switch(randInt){
             case 0:

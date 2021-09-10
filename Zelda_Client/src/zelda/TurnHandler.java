@@ -41,21 +41,6 @@ class TurnHandler extends Thread{
         
         enemyIndex = 0;
         enemyTurnCounter = 0;
-        /*
-        characterTurn = cacheData.gameCacheData.getCharacterTurn();
-        if(characterTurn == true){
-            zelda.listen = true;
-        }
-        else{
-            zelda.listen = false;
-        }
-        enemyIndex = cacheData.gameCacheData.getEnemyIndex();
-        
-        inputCounter = cacheData.gameCacheData.getInputCounter();
-        enemyTurnCounter = cacheData.gameCacheData.getEnemyTurnCounter();
-        
-        gameView.endedAnimationCurrentEnemy = true;
-        */
     }
     
     public boolean getCharacterTurn(){
@@ -81,7 +66,7 @@ class TurnHandler extends Thread{
                 if(characterTurn == true){
                     if(gameView.endedAnimationCharacter == true){
                         Platform.runLater(() ->{
-                            gameView.update(gameModel);
+                            gameView.updateBoard(gameModel);
                         });
                         inputCounter++;
                         if(inputCounter == 3){
@@ -98,7 +83,7 @@ class TurnHandler extends Thread{
                     if(gameView.endedAnimationEnemies == true){
                         System.out.println("endedAnimationEnemies");
                         Platform.runLater(() ->{
-                            gameView.update(gameModel);
+                            gameView.updateBoard(gameModel);
                         });
                         enemyIndex = 0;
                         enemyTurnCounter++;
@@ -119,7 +104,7 @@ class TurnHandler extends Thread{
                     else if(gameView.endedAnimationCurrentEnemy == true){
                         System.out.println("endedAnimationCurrentEnemy");
                         Platform.runLater(() ->{
-                            gameView.update(gameModel);
+                            gameView.updateBoard(gameModel);
                         });
 
                         if(gameModel.isEnded() == true){
@@ -144,6 +129,5 @@ class TurnHandler extends Thread{
                 Logger.getLogger(Zelda.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        //}
     }
 }

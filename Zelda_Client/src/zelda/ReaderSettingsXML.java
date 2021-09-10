@@ -16,7 +16,6 @@ public class ReaderSettingsXML {
 
     private static final String filePathXml = "settings.xml";
     private static final String filePathXsd = "settings.xsd";
-    //private static final KeyAssociation keyAssociation = new KeyAssociation(KeyCode.RIGHT, KeyCode.LEFT, KeyCode.UP, KeyCode.DOWN, KeyCode.Z);
     public static final SettingsXML defaultSettings = new SettingsXML(
             new KeyAssociation(KeyCode.RIGHT, KeyCode.LEFT, KeyCode.UP, KeyCode.DOWN, KeyCode.Z, KeyCode.C, KeyCode.X),
             new ServerAddress("localhost", 9200),
@@ -72,10 +71,6 @@ public class ReaderSettingsXML {
     private static void writeDefaultSettings() {
         XStream xs = new XStream();
         xs.setMode(XStream.NO_REFERENCES);
-        /*
-        xs.useAttributeFor(PortaAscoltoClient.class, "portaMinima");
-        xs.useAttributeFor(PortaAscoltoClient.class, "portaMassima");
-        */
         String x = xs.toXML(defaultSettings);
 
         try {
