@@ -178,8 +178,6 @@ public class Zelda extends Application{
                     return;
                 }
             }
-            String eventDescription = EventLoggerXML.eventDescriptionNotOkKey.replaceFirst(EventLoggerXML.placeholderDescription, key.getName());
-            EventLoggerXML.recordEvent(eventDescription);
             listen = true;
         }
         /*

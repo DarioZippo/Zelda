@@ -9,6 +9,3 @@ CREATE TABLE `record` (
   `points` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`user`, `points`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-SELECT *
-FROM record;

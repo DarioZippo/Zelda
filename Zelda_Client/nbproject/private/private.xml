@@ -4,28 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/git%20projects/Zelda/Zelda_Client/settings.xml</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/EventLoggerXML.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/EventLogXML.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/Command.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/TurnHandler.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/ElementCacheData.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/CacheData.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GameEnemy.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/Zelda.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GameCharacter.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GameCacheData.java</file>
             <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/Record.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/ReaderSettingsXML.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GameUtils.java</file>
+            <file>file:/D:/git%20projects/Zelda/Zelda_Client/settings.xsd</file>
             <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GameTile.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GraficTile.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/entrataLog.xsd</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/SettingsXML.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GameModel.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/GameView.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/InterfaceBuilder.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/DBManager.java</file>
-            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/KeyAssociation.java</file>
+            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/TurnHandler.java</file>
+            <file>file:/D:/git%20projects/Zelda/Zelda_Client/src/zelda/Zelda.java</file>
         </group>
     </open-files>
 </project-private>

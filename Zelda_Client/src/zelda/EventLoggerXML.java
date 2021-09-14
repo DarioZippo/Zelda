@@ -33,7 +33,6 @@ public class EventLoggerXML {
     public static final String placeholderDescription  = "-";
     
     public static final String eventDescriptionOkKey = "Premuto tasto ok: -";
-    public static final String eventDescriptionNotOkKey = "Premuto tasto non ok: -";
 
     public static void setServerLogAddress(String address, int port){
         //System.out.println("Setta");
